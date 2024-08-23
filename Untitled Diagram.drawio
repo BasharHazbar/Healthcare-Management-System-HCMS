@@ -211,7 +211,7 @@
             <mxRectangle width="30" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="7MH-9bf76Wqgd5tAqwoI-86" value="Major" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;textShadow=1;" vertex="1" parent="7MH-9bf76Wqgd5tAqwoI-84">
+        <mxCell id="7MH-9bf76Wqgd5tAqwoI-86" value="Specialization" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;textShadow=1;" vertex="1" parent="7MH-9bf76Wqgd5tAqwoI-84">
           <mxGeometry x="30" width="150" height="30" as="geometry">
             <mxRectangle width="150" height="30" as="alternateBounds" />
           </mxGeometry>
