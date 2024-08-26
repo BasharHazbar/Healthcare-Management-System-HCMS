@@ -20,3 +20,107 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Eclipse specific files
+.classpath
+.project
+.settings/
+
+# Java build output directories
+bin/
+obj/
+target/
+App.config
+.vs/
+# Maven specific files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+
+# macOS specific files
+.DS_Store
+
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+*.swp
+*~.nib
+*.orig
+*.rej
+# Additional build results
+*.class
+*.jar
+*.war
+*.ear
+
+# Apache Tapestry specific files
+tapestry.properties
+
+# Node.js specific files
+node_modules/
+
+# Ignore compiled class files and Maven output
+**/target/
+**/bin/
+
+# Ignore temp files and backup files
+*.tmp
+*.bak
+*.swp
+
+# Ignore Eclipse specific project settings
+.metadata/
+
+# Ignore Eclipse project-specific files
+*.classpath
+*.project
+.settings/
+
+# Ignore Eclipse and other IDE project files
+*.iml
+*.ipr
+*.iws
+
+# Ignore Jetty specific files
+.jetty/
+
+# Ignore generated files for web application
+*.json
+*.xml
+*.properties
+
+# Ignore OS-specific files
+Thumbs.db
+.DS_Store
+
+# Ignore configuration files
+*.env
+*.local
+*.secret
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore JRebel specific files
+.rebel.xml
+
+# Ignore SonarQube specific files
+.sonar/
+.sonarlint/
+
+# Ignore IDE specific directories
+.idea/
+.vscode/
