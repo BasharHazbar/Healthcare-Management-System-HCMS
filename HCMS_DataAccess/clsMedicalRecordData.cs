@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace HCMS_DataAccess
 {
-    public class clsUserData
+    public class clsMedicalRecordData
     {
-        public static bool GetUserInfoByID(int UserID, ref int PersonID, ref string UserName, 
-            ref string Password, ref byte Role, ref DateTime CreatedDate)
+        public static bool GetMedicalRecordInfoByID(int MedicalRecordID, ref int AppointmentID, ref string Diagnosis, ref string VisitDescription)
         {
             bool isFound = false;
 
-            string query = "SELECT * FROM Users where UserID = @UserID";
+            string query = "select * from MedicalRecords where MedicalRecordID = @MedicalRecordID;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
                     try
                     {
                         connection.Open();
@@ -32,12 +31,13 @@ namespace HCMS_DataAccess
                             {
                                 isFound = true;
 
-                                UserID = (int)reader["UserID"];
-                                PersonID = (int)reader["PersonID"];
-                                UserName = (string)reader["UserName"];
-                                Password = (string)reader["Password"];
-                                Role = (byte)reader["Role"];
-                                CreatedDate = (DateTime)reader["CreatedDate"];
+                                AppointmentID = (int)reader["AppointmentID"];
+
+                                MedicalRecordID = (int)reader["MedicalRecordID"];
+
+                                Diagnosis = (string)reader["Diagnosis"];
+
+                                VisitDescription = (string)reader["VisitDescription"];
                             }
                             else
                             {
@@ -56,27 +56,25 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
-        public static int AddNewUser(int PersonID, string UserName, string Password, byte Role)
+        public static int AddNewMedicalRecord(int AppointmentID, string Diagnosis, string VisitDescription)
         {
-            int UserID = -1;
+            int PatientID = -1;
 
-            string query = @"INSERT INTO Users (PersonID
-                                           ,UserName
-                                           ,Password
-                                           ,Role
-                                           ,CreatedDate)
-                                     VALUES (@PersonID,@UserName,@Password,@Role,@CreatedDate);
-                                         SELECT SCOPE_IDENTITY();";
+            string query = @"INSERT INTO MedicalRecords
+                                       (AppointmentID
+                                       ,Diagnosis
+                                       ,VisitDescription)
+                                 VALUES (@AppointmentID,@Diagnosis,@VisitDescription)
+                     SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@Role", Role);
-                    command.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                    command.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+                    command.Parameters.AddWithValue("@Diagnosis", Diagnosis);
+                    command.Parameters.AddWithValue("@PersonID", VisitDescription);
+
 
                     try
                     {
@@ -86,40 +84,37 @@ namespace HCMS_DataAccess
 
                         if (result != null && int.TryParse(result.ToString(), out int insertID))
                         {
-                            UserID = insertID;
+                            PatientID = insertID;
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error: " + ex);
+                        Console.WriteLine("Error: " + ex.Message);
                     }
                 }
             }
 
-            return UserID;
+            return PatientID;
         }
 
-        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, byte Role)
+        public static bool UpdateMedicalRecord(int MedicalRecordID, int AppointmentID, string Diagnosis, string VisitDescription)
         {
             int rowsAffected = 0;
 
-            string query = @"UPDATE Users
-                                   SET PersonID = @PersonID
-                                      ,UserName = @UserName
-                                      ,Password = @Password
-                                      ,Role = @Role
-                                 WHERE UserID = @UserID";
+            string query = @"UPDATE MedicalRecords
+                                       SET AppointmentID = 
+                                          ,Diagnosis = 
+                                          ,VisitDescription = 
+                                     WHERE MedicalRecordID = @MedicalRecordID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@Role", Role);
-
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
+                    command.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+                    command.Parameters.AddWithValue("@Diagnosis", Diagnosis);
+                    command.Parameters.AddWithValue("@VisitDescription", VisitDescription);
 
                     try
                     {
@@ -139,12 +134,12 @@ namespace HCMS_DataAccess
 
 
 
-        public static DataTable GetAllUsers()
+        public static DataTable GetAllMedicalRecords()
         {
 
             DataTable dt = new DataTable();
 
-            string query =  @"SELECT * from Users;";
+            string query = @"SELECT * from MedicalRecords;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -181,16 +176,16 @@ namespace HCMS_DataAccess
 
         }
 
-        public static bool DeleteUser(int UserID)
+        public static bool DeleteMedicalRecord(int MedicalRecordID)
         {
             int rowsAffected = 0;
-            string query = @"DELETE FROM Users WHERE UserID = @UserID";
+            string query = @"DELETE FROM MedicalRecords WHERE MedicalRecordID = @MedicalRecordID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
 
                     try
                     {
@@ -209,16 +204,16 @@ namespace HCMS_DataAccess
         }
 
 
-        public static bool IsUserExist(int UserID)
+        public static bool IsMedicalRecordExist(int PatientID)
         {
             bool isFound = false;
-            string query = "Select 1 from Users where UserID = @UserID";
+            string query = "select 1 from MedicalRecords where MedicalRecordID = @MedicalRecordID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@PatientID", PatientID);
 
                     try
                     {
@@ -239,5 +234,7 @@ namespace HCMS_DataAccess
 
             return isFound;
         }
+
+
     }
 }

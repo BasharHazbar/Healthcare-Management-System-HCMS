@@ -5,23 +5,25 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace HCMS_DataAccess
 {
-    public class clsUserData
+    public class clsPrescriptionData
     {
-        public static bool GetUserInfoByID(int UserID, ref int PersonID, ref string UserName, 
-            ref string Password, ref byte Role, ref DateTime CreatedDate)
+
+        public static bool GetPrescriptionInfoByID(int PrescriptionID,ref int MedicalRecordID,ref string Treatment,
+            ref string Dosage,ref string Frequency, ref DateTime StartDate, ref DateTime EndDate, ref string SpecialInstructions)
         {
             bool isFound = false;
 
-            string query = "SELECT * FROM Users where UserID = @UserID";
+            string query = "SELECT * FROM Prescriptions WHERE PrescriptionID = @PrescriptionID;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
                     try
                     {
                         connection.Open();
@@ -32,12 +34,21 @@ namespace HCMS_DataAccess
                             {
                                 isFound = true;
 
-                                UserID = (int)reader["UserID"];
-                                PersonID = (int)reader["PersonID"];
-                                UserName = (string)reader["UserName"];
-                                Password = (string)reader["Password"];
-                                Role = (byte)reader["Role"];
-                                CreatedDate = (DateTime)reader["CreatedDate"];
+                                PrescriptionID = (int)reader["AppointmentID"];
+
+                                MedicalRecordID = (int)reader["MedicalRecordID"];
+
+                                Treatment = (string)reader["Treatment"];
+
+                                Dosage = (string)reader["Dosage"];
+
+                                Frequency = (string)reader["Frequency"];
+
+                                StartDate = (DateTime)reader["StartDate"];
+
+                                EndDate = (DateTime)reader["EndDate"];
+
+                                SpecialInstructions = (string)reader["SpecialInstructions"];
                             }
                             else
                             {
@@ -56,27 +67,35 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
-        public static int AddNewUser(int PersonID, string UserName, string Password, byte Role)
+        public static int AddNewPrescription(int MedicalRecordID, string Treatment,string Dosage,
+            string Frequency, DateTime StartDate, DateTime EndDate, string SpecialInstructions)
         {
-            int UserID = -1;
+            int PrescriptionID = -1;
 
-            string query = @"INSERT INTO Users (PersonID
-                                           ,UserName
-                                           ,Password
-                                           ,Role
-                                           ,CreatedDate)
-                                     VALUES (@PersonID,@UserName,@Password,@Role,@CreatedDate);
-                                         SELECT SCOPE_IDENTITY();";
+            string query = @" INSERT INTO Prescriptions
+                                   (MedicalRecordID
+                                   ,Treatment
+                                   ,Dosage
+                                   ,Frequency
+                                   ,StartDate
+                                   ,EndDate
+                                   ,SpecialInstructions)
+                             VALUES
+                                   (@MedicalRecordID,@Treatment,@Dosage,@Frequency,
+                                    @StartDate,@EndDate,@SpecialInstructions)
+                                        SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@Role", Role);
-                    command.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
+                    command.Parameters.AddWithValue("@Treatment", Treatment);
+                    command.Parameters.AddWithValue("@Dosage", Dosage);
+                    command.Parameters.AddWithValue("@Frequency", Frequency);
+                    command.Parameters.AddWithValue("@StartDate", StartDate);
+                    command.Parameters.AddWithValue("@EndDate", EndDate);
+                    command.Parameters.AddWithValue("@SpecialInstructions", SpecialInstructions);
 
                     try
                     {
@@ -86,40 +105,46 @@ namespace HCMS_DataAccess
 
                         if (result != null && int.TryParse(result.ToString(), out int insertID))
                         {
-                            UserID = insertID;
+                            PrescriptionID = insertID;
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error: " + ex);
+                        Console.WriteLine("Error: " + ex.Message);
                     }
                 }
             }
 
-            return UserID;
+            return PrescriptionID;
         }
 
-        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, byte Role)
+        public static bool UpdatePrescription(int PrescriptionID,int MedicalRecordID, string Treatment, string Dosage,
+            string Frequency, DateTime StartDate, DateTime EndDate, string SpecialInstructions)
         {
             int rowsAffected = 0;
 
-            string query = @"UPDATE Users
-                                   SET PersonID = @PersonID
-                                      ,UserName = @UserName
-                                      ,Password = @Password
-                                      ,Role = @Role
-                                 WHERE UserID = @UserID";
+            string query = @"UPDATE Prescriptions
+                                   SET MedicalRecordID = @MedicalRecordID
+                                      ,Treatment = @Treatment
+                                      ,Dosage = @Dosage
+                                      ,Frequency = @Frequency
+                                      ,StartDate = @StartDate
+                                      ,EndDate = @EndDate
+                                      ,SpecialInstructions = @SpecialInstructions
+                                 WHERE PrescriptionID = @PrescriptionID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@UserName", UserName);
-                    command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
-                    command.Parameters.AddWithValue("@Role", Role);
-
+                    command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
+                    command.Parameters.AddWithValue("@Treatment", Treatment);
+                    command.Parameters.AddWithValue("@Dosage", Dosage);
+                    command.Parameters.AddWithValue("@Frequency", Frequency);
+                    command.Parameters.AddWithValue("@StartDate", StartDate);
+                    command.Parameters.AddWithValue("@EndDate", EndDate);
+                    command.Parameters.AddWithValue("@SpecialInstructions", SpecialInstructions);
 
                     try
                     {
@@ -139,12 +164,12 @@ namespace HCMS_DataAccess
 
 
 
-        public static DataTable GetAllUsers()
+        public static DataTable GetAllPrescriptions()
         {
 
             DataTable dt = new DataTable();
 
-            string query =  @"SELECT * from Users;";
+            string query = @"SELECT * from Prescriptions;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -181,16 +206,16 @@ namespace HCMS_DataAccess
 
         }
 
-        public static bool DeleteUser(int UserID)
+        public static bool DeletePrescription(int PrescriptionID)
         {
             int rowsAffected = 0;
-            string query = @"DELETE FROM Users WHERE UserID = @UserID";
+            string query = @"DELETE FROM Prescriptions WHERE Prescriptions = @Prescriptions";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
 
                     try
                     {
@@ -209,16 +234,16 @@ namespace HCMS_DataAccess
         }
 
 
-        public static bool IsUserExist(int UserID)
+        public static bool IsPrescriptionExist(int PrescriptionID)
         {
             bool isFound = false;
-            string query = "Select 1 from Users where UserID = @UserID";
+            string query = "select 1 from Prescriptions where PrescriptionID = @PrescriptionID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", UserID);
+                    command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
 
                     try
                     {
@@ -239,5 +264,6 @@ namespace HCMS_DataAccess
 
             return isFound;
         }
+
     }
 }

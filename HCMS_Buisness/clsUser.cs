@@ -16,7 +16,7 @@ namespace HCMS_Buisness
 
         private enMode Mode = enMode.AddNew;
 
-        public enum enRole { Admin = 1, Doctor = 2, Patient = 3}
+        public enum enRole { Admin = 0, Doctor = 1, Patient = 2}
 
         public int UserID { get; set; }
         public int PersonID { get; set; }

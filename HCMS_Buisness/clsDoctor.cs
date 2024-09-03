@@ -16,7 +16,7 @@ namespace HCMS_Buisness
         private enMode Mode = enMode.AddNew;
         public int DoctorID { set; get; }
         public int PersonID { set; get; }
-        clsPerson PersonInfo { set; get; }
+        public clsPerson PersonInfo { set; get; }
         public string Specialization { set; get; }
         public string ClinicAddress { set; get; }
         public clsDoctor() {
@@ -40,7 +40,7 @@ namespace HCMS_Buisness
 
         private bool _AddNewDoctor()
         {
-            this.DoctorID = clsDoctorData.AddNewDoctor(this.DoctorID, this.Specialization, this.ClinicAddress);
+            this.DoctorID = clsDoctorData.AddNewDoctor(this.PersonID, this.Specialization, this.ClinicAddress);
             return this.DoctorID != -1;
         }
 
