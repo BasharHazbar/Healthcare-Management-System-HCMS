@@ -13,7 +13,7 @@ namespace HCMS_Buisness
 
         public enum enMode { AddNew = 0, Update = 1 }
 
-        public enMode Mode = enMode.AddNew;
+        private enMode Mode = enMode.AddNew;
 
         public int MedicalRecordID { get; set; }
 

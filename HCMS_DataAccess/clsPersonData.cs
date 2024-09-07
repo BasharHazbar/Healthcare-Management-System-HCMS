@@ -191,7 +191,7 @@ namespace HCMS_DataAccess
             string query =
               @"SELECT People.PersonID, 
               People.FirstName, People.SecondName, People.ThirdName, People.LastName,
-			  People.DateOfBirth, People.Gender,  
+			  convert(varchar,  People.DateOfBirth, 0) as DateOfBirth, People.Gender,  
 				  CASE
                   WHEN People.Gender = 0 THEN 'Male'
 
@@ -200,7 +200,7 @@ namespace HCMS_DataAccess
                   END as GendorCaption ,
 			  People.Address, People.PhoneNumber, People.Email, People.ImagePath
               FROM People
-                ORDER BY People.FirstName";
+                ORDER BY People.FirstName;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {

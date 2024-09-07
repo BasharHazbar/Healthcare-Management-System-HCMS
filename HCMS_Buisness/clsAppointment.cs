@@ -12,7 +12,7 @@ namespace HCMS_Buisness
     {
         public enum enMode { AddNew = 0, Update = 1 }
 
-        public enMode Mode = enMode.AddNew;
+        private enMode Mode = enMode.AddNew;
         public enum enStatus { Scheduled = 0, Completed = 1, Canceled = 2 }
         public int AppointmentID { get; set; }
 

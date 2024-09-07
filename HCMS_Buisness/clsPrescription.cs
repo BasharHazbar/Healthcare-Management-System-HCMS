@@ -13,7 +13,7 @@ namespace HCMS_Buisness
     {
         public enum enMode { AddNew = 0, Update = 1 }
 
-        public enMode Mode = enMode.AddNew;
+        private enMode Mode = enMode.AddNew;
 
         public int PrescriptionID {  get; set; }
         public int MedicalRecordID { get; set; }
@@ -43,7 +43,7 @@ namespace HCMS_Buisness
         {
             this.PrescriptionID = PrescriptionID;
             this.MedicalRecordID = MedicalRecordID;
-            MedicalRecordInfo = clsMedicalRecord.Find(MedicalRecordID);
+            this.MedicalRecordInfo = clsMedicalRecord.Find(MedicalRecordID);
             this.Treatment = Treatment;
             this.Dosage = Dosage;
             this.Frequency = Frequency;

@@ -16,5 +16,18 @@ namespace HCMS
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ctrlPersonCard1.LoadPersonInfo(2);
+            ctrlPersonCardWithFilter1.ShowAddPerson = true;
+            ctrlPersonCardWithFilter1.FilterEnabled = true;
+        }
+
     }
 }
