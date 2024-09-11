@@ -37,9 +37,15 @@ namespace HCMS.People.Controls
             get { return ctrlPersonCard.PersonID; }
         }
 
-        public void FilterFocus()
+        public void TextFilterFocus()
         {
             txtFind.Focus();
+        }
+
+        public void LoadPersonData(int PersonID)
+        {
+            txtFind.Text = PersonID.ToString();
+            FindNow();
         }
 
         public clsPerson SelectedPersonInfo
@@ -70,10 +76,10 @@ namespace HCMS.People.Controls
 
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            txtFind.Focus();
+            TextFilterFocus();
         }
 
-        private void txtFind_Validating(object sender, CancelEventArgs e)
+     /*   private void txtFind_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtFind.Text.Trim()))
             {
@@ -85,7 +91,7 @@ namespace HCMS.People.Controls
                 //e.Cancel = false;
                 errorProvider1.SetError(txtFind, null);
             }
-        }
+        }*/
 
         private void txtFind_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -99,7 +105,8 @@ namespace HCMS.People.Controls
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
-
+            frmAddUpdatePerson form = new frmAddUpdatePerson();
+            form.ShowDialog();
         }
     }
 }

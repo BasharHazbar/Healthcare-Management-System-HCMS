@@ -24,6 +24,7 @@ namespace HCMS_Buisness
         public string UserName { get; set; }
         public string Password { get; set; }
         public enRole Role { get; set; }
+        public bool IsActive {  get; set; } 
         public DateTime CreatedDate { get; set; }
 
 
@@ -34,11 +35,12 @@ namespace HCMS_Buisness
             this.UserName = "";
             this.Password = "";
             this.Role = enRole.Admin;
+            this.IsActive = true;
 
             this.Mode = enMode.AddNew;
         }
 
-        public clsUser(int UserID, int PersonID, string UserName,string Password,enRole Role, DateTime CreatedDate)
+        public clsUser(int UserID, int PersonID, string UserName,string Password,enRole Role, bool IsActive, DateTime CreatedDate)
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
@@ -46,6 +48,7 @@ namespace HCMS_Buisness
             this.UserName = UserName;
             this.Password = Password;
             this.Role = Role;
+            this.IsActive = IsActive;
             this.CreatedDate = CreatedDate;
             this.Mode = enMode.Update;
         }
@@ -59,20 +62,21 @@ namespace HCMS_Buisness
 
         private bool _UpdateUser()
         {
-            return clsUserData.UpdateUser(this.UserID,this.PersonID,this.UserName,this.Password,(byte)this.Role);
+            return clsUserData.UpdateUser(this.UserID,this.PersonID,this.UserName,this.Password,(byte)this.Role, this.IsActive);
         }
 
-        public clsUser Find(int UserID)
+        public static clsUser Find(int UserID)
         {
             int PersonID = -1;
             string UserName = "";
             string Password = "";
-            DateTime CreatedDate = DateTime.Now;
             byte Role = 0;
+            DateTime CreatedDate = DateTime.Now;
+            bool IsActive = true;
 
 
-            if (clsUserData.GetUserInfoByID(UserID, ref PersonID, ref UserName, ref Password, ref Role, ref CreatedDate))
-                return new clsUser(UserID,PersonID,UserName,Password,(enRole)Role,CreatedDate);
+            if (clsUserData.GetUserInfoByID(UserID, ref PersonID, ref UserName, ref Password, ref Role, ref IsActive, ref CreatedDate))
+                return new clsUser(UserID,PersonID,UserName,Password,(enRole)Role,IsActive,CreatedDate);
 
             else
             return null;
@@ -121,6 +125,17 @@ namespace HCMS_Buisness
         public static bool IsUserExist(int UserID)
         {
             return clsUserData.IsUserExist(UserID);
+        }
+
+
+        public static bool IsUserExist(string UserName)
+        {
+            return clsUserData.IsUserExist(UserName);
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistByPersonID(PersonID);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace HCMS.People
     public partial class frmAddUpdatePerson : Form
     {
         public enum enMode { AddNew = 0, Update = 1 };
+  
 
         public enum enGender { Male = 0, Female = 1 };
 
@@ -79,6 +80,7 @@ namespace HCMS.People
                 return;
             }
 
+            _PersonID = _Person.PersonID;
             lblPersonID.Text = _PersonID.ToString();
             txtFirstName.Text = _Person.FirstName;
             txtSecondName.Text = _Person.SecondName;
@@ -188,7 +190,7 @@ namespace HCMS.People
 
             if (!this.ValidateChildren())
             {
-                MessageBox.Show("Some Feilds Not Valid, Put the Mouse over the Icon(s) to know the Reason!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Fields Not Valid, Put the Mouse over the Icon(s) to know the Reason!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -225,6 +227,7 @@ namespace HCMS.People
             if (_Person.Save())
             {
                 lblPersonID.Text = _Person.PersonID.ToString();
+                _PersonID = _Person.PersonID;
                 _Mode = enMode.Update;
 
                 lblTitle.Text = "Update Person";

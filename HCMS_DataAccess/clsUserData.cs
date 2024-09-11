@@ -11,7 +11,7 @@ namespace HCMS_DataAccess
     public class clsUserData
     {
         public static bool GetUserInfoByID(int UserID, ref int PersonID, ref string UserName, 
-            ref string Password, ref byte Role, ref DateTime CreatedDate)
+            ref string Password, ref byte Role,ref bool IsActive, ref DateTime CreatedDate)
         {
             bool isFound = false;
 
@@ -64,8 +64,9 @@ namespace HCMS_DataAccess
                                            ,UserName
                                            ,Password
                                            ,Role
+                                           ,IsActive
                                            ,CreatedDate)
-                                     VALUES (@PersonID,@UserName,@Password,@Role,@CreatedDate);
+                                     VALUES (@PersonID,@UserName,@Password,@Role,@IsActive,@CreatedDate);
                                          SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -76,6 +77,7 @@ namespace HCMS_DataAccess
                     command.Parameters.AddWithValue("@UserName", UserName);
                     command.Parameters.AddWithValue("@Password", Password);
                     command.Parameters.AddWithValue("@Role", Role);
+                    command.Parameters.AddWithValue("@IsActive", true);
                     command.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
 
                     try
@@ -99,7 +101,7 @@ namespace HCMS_DataAccess
             return UserID;
         }
 
-        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, byte Role)
+        public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, byte Role, bool IsActive)
         {
             int rowsAffected = 0;
 
@@ -108,17 +110,19 @@ namespace HCMS_DataAccess
                                       ,UserName = @UserName
                                       ,Password = @Password
                                       ,Role = @Role
+                                      ,IsActive = @IsActive
                                  WHERE UserID = @UserID";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@PersonID", PersonID);
                     command.Parameters.AddWithValue("@UserName", UserName);
                     command.Parameters.AddWithValue("@Password", Password);
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
                     command.Parameters.AddWithValue("@Role", Role);
+                    command.Parameters.AddWithValue("@IsActive", IsActive);
 
 
                     try
@@ -128,7 +132,7 @@ namespace HCMS_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error: " + ex.Message);
+                        Console.WriteLine("Error: " + ex.ToString());
                         return false;
                     }
                 }
@@ -144,7 +148,15 @@ namespace HCMS_DataAccess
 
             DataTable dt = new DataTable();
 
-            string query =  @"SELECT * from Users;";
+            string query = @"select UserID,u.PersonID, FullName = p.FirstName + ' ' + p.SecondName + ' ' + 
+                                ISNULL( p.ThirdName,'') +' ' + p.LastName,
+                                u.UserName,
+                                case when u.Role = 0 then 'Admin' when u.Role = 1 then 'Patient' 
+                                when u.Role = 2 then 'Doctor'else 'Unknown' end as Role
+                                ,u.IsActive
+                                from Users u
+                                join People p on p.PersonID = u.PersonID
+                                order by UserID desc;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -219,6 +231,68 @@ namespace HCMS_DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@UserID", UserID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error message
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return isFound;
+        }
+
+        public static bool IsUserExist(string UserName)
+        {
+            bool isFound = false;
+            string query = "Select 1 from Users where UserName = @UserName";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserName", UserName);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error message
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return isFound;
+        }
+
+        public static bool IsUserExistByPersonID(int PersonID)
+        {
+            bool isFound = false;
+            string query = "Select 1 from Users where PersonID = @PersonID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
 
                     try
                     {

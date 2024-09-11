@@ -1,4 +1,5 @@
 ﻿using HCMS.People;
+using HCMS.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace HCMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListPeople());
+            Application.Run(new frmListUsers());
         }
     }
 }
