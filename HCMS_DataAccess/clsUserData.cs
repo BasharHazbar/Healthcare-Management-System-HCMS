@@ -56,6 +56,55 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
+        public static bool GetUserInfoByUserNameAndPassword(string UserName, string Password, ref int UserID, ref int PersonID
+            , ref byte Role, ref bool IsActive, ref DateTime CreatedDate)
+        {
+            bool isFound = false;
+
+            string query = " SELECT * FROM Users where UserName = @UserName and Password = @Password; ";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserName", UserName);
+                    command.Parameters.AddWithValue("@Password", Password);
+
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                UserID = (int)reader["UserID"];
+                                PersonID = (int)reader["PersonID"];
+                                UserName = (string)reader["UserName"];
+                                Password = (string)reader["Password"];
+                                Role = (byte)reader["Role"];
+                                CreatedDate = (DateTime)reader["CreatedDate"];
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex);
+
+                        isFound = false;
+                    }
+                }
+            }
+            return isFound;
+        }
+
         public static int AddNewUser(int PersonID, string UserName, string Password, byte Role)
         {
             int UserID = -1;

@@ -66,7 +66,10 @@ namespace HCMS.People.Controls
 
         private void FindNow()
         {
-            ctrlPersonCard.LoadPersonInfo(int.Parse(txtFind.Text));
+            if (!string.IsNullOrEmpty(txtFind.Text))
+            {
+                ctrlPersonCard.LoadPersonInfo(int.Parse(txtFind.Text));
+            }
 
             if (OnSelectedPerson != null && FilterEnabled)
                 OnSelectedPerson?.Invoke(PersonID);

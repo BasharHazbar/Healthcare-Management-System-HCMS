@@ -26,7 +26,7 @@ namespace HCMS.Users
 
 /*        public int UserID { get { return _UserID; } }
 
-        public clsUser User { get { return _User; } }*/
+          public clsUser User { get { return _User; } }*/
 
         public void LoadUserInfo(int UserID)
         {
@@ -35,7 +35,7 @@ namespace HCMS.Users
             if (_User == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("No User with UserID = " + UserID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No User with UserID = " + UserID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

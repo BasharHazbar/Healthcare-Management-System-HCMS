@@ -128,8 +128,9 @@ namespace HCMS_DataAccess
 
             DataTable dt = new DataTable();
 
-            string query =
-              @"SELECT * from Patients;";
+            string query = @"Select pt.PatientID,pt.PersonID, FullName = pr.FirstName + ' ' + pr.SecondName + ' ' +  
+                         ISNULL( pr.ThirdName,'') +' ' + pr.LastName, pr.Address from Patients pt
+                         join People pr on pr.PersonID = pt.PersonID order by pt.PatientID desc;;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -204,6 +205,37 @@ namespace HCMS_DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@PatientID", PatientID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error message
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+
+            return isFound;
+        }
+
+        public static bool IsPatientExistByPersonId(int PersonID)
+        {
+            bool isFound = false;
+            string query = "Select 1 from Patients where PersonID = @PersonID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
 
                     try
                     {

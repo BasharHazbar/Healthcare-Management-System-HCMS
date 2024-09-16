@@ -1,10 +1,5 @@
 ﻿using HCMS_DataAccess;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HCMS_Buisness
 {
@@ -102,6 +97,16 @@ namespace HCMS_Buisness
         public static bool IsDoctorExist(int DoctorID)
         {
             return clsDoctorData.IsDoctorExist(DoctorID);
+        }
+
+        public static bool IsDoctor(int PersonID)
+        {
+            return clsDoctorData.IsDoctorExistByPersonID(PersonID);
+        }
+
+        public static bool IsPatient(int PersonID)
+        {
+            return clsPatient.IsPatient(PersonID);
         }
     }
 }

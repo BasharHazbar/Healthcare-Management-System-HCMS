@@ -49,17 +49,59 @@
     <Compile Include="Classes\clsGlobal.cs" />
     <Compile Include="Classes\clsUtil.cs" />
     <Compile Include="Classes\clsValidatoin.cs" />
+    <Compile Include="Doctors\Controls\ctrlDoctorDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Doctors\Controls\ctrlDoctorDetails.Designer.cs">
+      <DependentUpon>ctrlDoctorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\frmAddUpdateDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\frmAddUpdateDoctor.Designer.cs">
+      <DependentUpon>frmAddUpdateDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\frmDoctorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\frmDoctorDetails.Designer.cs">
+      <DependentUpon>frmDoctorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\frmListDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\frmListDoctor.Designer.cs">
+      <DependentUpon>frmListDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\frmAddUpdatePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\frmAddUpdatePatient.Designer.cs">
+      <DependentUpon>frmAddUpdatePatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\frmListPatients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\frmListPatients.Designer.cs">
+      <DependentUpon>frmListPatients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\frmPatientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Patients\frmPatientDetails.Designer.cs">
+      <DependentUpon>frmPatientDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\Controls\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="People\Controls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="People\Controls\ctrlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
@@ -111,17 +153,44 @@
     <Compile Include="Users\frmListUsers.Designer.cs">
       <DependentUpon>frmListUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogIn\frmLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogIn\frmLogIn.Designer.cs">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmUserDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\frmUserDetails.Designer.cs">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Doctors\Controls\ctrlDoctorDetails.resx">
+      <DependentUpon>ctrlDoctorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\frmAddUpdateDoctor.resx">
+      <DependentUpon>frmAddUpdateDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\frmDoctorDetails.resx">
+      <DependentUpon>frmDoctorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\frmListDoctor.resx">
+      <DependentUpon>frmListDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\frmAddUpdatePatient.resx">
+      <DependentUpon>frmAddUpdatePatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\frmListPatients.resx">
+      <DependentUpon>frmListPatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\frmPatientDetails.resx">
+      <DependentUpon>frmPatientDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonCard.resx">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\Controls\ctrlPersonCardWithFilter.resx">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
@@ -156,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmListUsers.resx">
       <DependentUpon>frmListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogIn\frmLogIn.resx">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUserDetails.resx">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
@@ -373,6 +445,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Add New User 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Specialization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor 33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Patient Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Patient 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Doctor 72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\patient 72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users 72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Users 2 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pexels-fr3nks-305568.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sign Out 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign_out 32 -21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogIn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeBlack32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

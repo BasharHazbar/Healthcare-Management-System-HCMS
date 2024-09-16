@@ -188,8 +188,7 @@ namespace HCMS_DataAccess
 
             DataTable dt = new DataTable();
        
-            string query =
-              @"SELECT People.PersonID, 
+            string query = @"SELECT People.PersonID, 
               People.FirstName, People.SecondName, People.ThirdName, People.LastName,
 			  convert(varchar,  People.DateOfBirth, 0) as DateOfBirth, People.Gender,  
 				  CASE

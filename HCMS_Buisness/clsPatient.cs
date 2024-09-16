@@ -100,6 +100,13 @@ namespace HCMS_Buisness
             return clsPatientData.IsPatientExist(PatientID);
         }
 
-
+        public static bool IsPatient(int PersonID)
+        {
+            return clsPatientData.IsPatientExistByPersonId(PersonID);
+        }
+        public static bool IsDoctor(int PersonID)
+        {
+            return clsDoctor.IsDoctor(PersonID);
+        }
     }
 }

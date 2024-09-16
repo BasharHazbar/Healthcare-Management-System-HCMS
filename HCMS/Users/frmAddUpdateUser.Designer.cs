@@ -31,14 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tcUserInfo = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlPersonCardWithFilter = new HCMS.People.Controls.ctrlPersonCardWithFilter();
             this.tpUserInfo = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbRole = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblUserID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
@@ -46,23 +41,28 @@
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.ctrlPersonCardWithFilter = new HCMS.People.Controls.ctrlPersonCardWithFilter();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tcUserInfo.SuspendLayout();
             this.tpPersonInfo.SuspendLayout();
             this.tpUserInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcUserInfo
@@ -89,38 +89,12 @@
             this.tpPersonInfo.TabIndex = 0;
             this.tpPersonInfo.Text = "Person Information";
             // 
-            // btnNext
-            // 
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Image = global::HCMS.Properties.Resources.Next_32;
-            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNext.Location = new System.Drawing.Point(890, 411);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(138, 46);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // ctrlPersonCardWithFilter
-            // 
-            this.ctrlPersonCardWithFilter.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(31, 26);
-            this.ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";
-            this.ctrlPersonCardWithFilter.ShowAddPerson = true;
-            this.ctrlPersonCardWithFilter.Size = new System.Drawing.Size(997, 375);
-            this.ctrlPersonCardWithFilter.TabIndex = 0;
-            // 
             // tpUserInfo
             // 
             this.tpUserInfo.BackColor = System.Drawing.Color.White;
             this.tpUserInfo.Controls.Add(this.pictureBox4);
             this.tpUserInfo.Controls.Add(this.label1);
             this.tpUserInfo.Controls.Add(this.cbRole);
-            this.tpUserInfo.Controls.Add(this.pictureBox1);
-            this.tpUserInfo.Controls.Add(this.pictureBox2);
             this.tpUserInfo.Controls.Add(this.lblUserID);
             this.tpUserInfo.Controls.Add(this.label4);
             this.tpUserInfo.Controls.Add(this.chkIsActive);
@@ -130,6 +104,8 @@
             this.tpUserInfo.Controls.Add(this.label3);
             this.tpUserInfo.Controls.Add(this.label5);
             this.tpUserInfo.Controls.Add(this.txtPassword);
+            this.tpUserInfo.Controls.Add(this.pictureBox1);
+            this.tpUserInfo.Controls.Add(this.pictureBox2);
             this.tpUserInfo.Controls.Add(this.pictureBox8);
             this.tpUserInfo.Controls.Add(this.pictureBox3);
             this.tpUserInfo.Location = new System.Drawing.Point(4, 34);
@@ -138,16 +114,6 @@
             this.tpUserInfo.Size = new System.Drawing.Size(1074, 487);
             this.tpUserInfo.TabIndex = 1;
             this.tpUserInfo.Text = "User Information";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::HCMS.Properties.Resources.Notes_32;
-            this.pictureBox4.Location = new System.Drawing.Point(287, 148);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 147;
-            this.pictureBox4.TabStop = false;
             // 
             // label1
             // 
@@ -173,26 +139,6 @@
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(232, 33);
             this.cbRole.TabIndex = 145;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::HCMS.Properties.Resources.Password_32;
-            this.pictureBox1.Location = new System.Drawing.Point(287, 230);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 144;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::HCMS.Properties.Resources.Number_32;
-            this.pictureBox2.Location = new System.Drawing.Point(287, 73);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 143;
-            this.pictureBox2.TabStop = false;
             // 
             // lblUserID
             // 
@@ -273,49 +219,6 @@
             this.label3.TabIndex = 138;
             this.label3.Text = "Confirm Password:";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(147, 191);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 25);
-            this.label5.TabIndex = 134;
-            this.label5.Text = "Password:";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPassword.Location = new System.Drawing.Point(355, 189);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPassword.MaxLength = 50;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(232, 30);
-            this.txtPassword.TabIndex = 132;
-            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::HCMS.Properties.Resources.Person_32;
-            this.pictureBox8.Location = new System.Drawing.Point(287, 109);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox8.TabIndex = 136;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::HCMS.Properties.Resources.Password_32;
-            this.pictureBox3.Location = new System.Drawing.Point(287, 189);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 135;
-            this.pictureBox3.TabStop = false;
-            // 
             // lbTitle
             // 
             this.lbTitle.AutoSize = true;
@@ -327,6 +230,25 @@
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "Add / Update User";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnSave
+            // 
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::HCMS.Properties.Resources.Save_32;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(954, 614);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(153, 46);
+            this.btnSave.TabIndex = 16;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -344,24 +266,102 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnSave
+            // btnNext
             // 
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::HCMS.Properties.Resources.Save_32;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(954, 614);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(153, 46);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Image = global::HCMS.Properties.Resources.Next_32;
+            this.btnNext.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNext.Location = new System.Drawing.Point(890, 411);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(138, 46);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
-            // errorProvider1
+            // pictureBox4
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.pictureBox4.Image = global::HCMS.Properties.Resources.Notes_32;
+            this.pictureBox4.Location = new System.Drawing.Point(287, 148);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 147;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HCMS.Properties.Resources.Password_32;
+            this.pictureBox1.Location = new System.Drawing.Point(287, 230);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 144;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::HCMS.Properties.Resources.Number_32;
+            this.pictureBox2.Location = new System.Drawing.Point(287, 73);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 143;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::HCMS.Properties.Resources.Person_32;
+            this.pictureBox8.Location = new System.Drawing.Point(287, 109);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 136;
+            this.pictureBox8.TabStop = false;
+            // 
+            // ctrlPersonCardWithFilter
+            // 
+            this.ctrlPersonCardWithFilter.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter.FilterEnabled = true;
+            this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(31, 26);
+            this.ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";
+            this.ctrlPersonCardWithFilter.ShowAddPerson = true;
+            this.ctrlPersonCardWithFilter.Size = new System.Drawing.Size(997, 375);
+            this.ctrlPersonCardWithFilter.TabIndex = 0;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::HCMS.Properties.Resources.Password_32;
+            this.pictureBox3.Location = new System.Drawing.Point(287, 189);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(31, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 135;
+            this.pictureBox3.TabStop = false;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Location = new System.Drawing.Point(355, 189);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPassword.MaxLength = 50;
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(232, 30);
+            this.txtPassword.TabIndex = 132;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(147, 191);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 25);
+            this.label5.TabIndex = 134;
+            this.label5.Text = "Password:";
             // 
             // frmAddUpdateUser
             // 
@@ -385,12 +385,12 @@
             this.tpPersonInfo.ResumeLayout(false);
             this.tpUserInfo.ResumeLayout(false);
             this.tpUserInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,14 +414,14 @@
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cbRole;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

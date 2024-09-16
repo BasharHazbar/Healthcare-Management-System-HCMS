@@ -107,12 +107,12 @@ namespace HCMS.People
                     FilterColumn = "Email";
                     break;
                 default:
-                    FilterColumn = "None";
+                    FilterColumn = "All";
                     break;
 
             }
 
-            if (txtFindBy.Text.Trim() == "" || cbFindBy.Text == "None")
+            if (txtFindBy.Text.Trim() == "" || FilterColumn == "None")
             {
                 _dtPeople.DefaultView.RowFilter = "";
                 lblRecordsCount.Text = _dtPeople.Rows.Count.ToString();
@@ -213,5 +213,6 @@ namespace HCMS.People
         {
             MessageBox.Show("This Feature Is Not Implemented Yet!", "Not Ready!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
     }
 }

@@ -42,6 +42,7 @@
             this.addNewUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneCallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbIsActive = new System.Windows.Forms.ComboBox();
             this.cbRole = new System.Windows.Forms.ComboBox();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsListUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -123,7 +123,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(231, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(214, 6);
             // 
             // cmsListUsers
             // 
@@ -140,14 +140,14 @@
             this.phoneCallToolStripMenuItem});
             this.cmsListUsers.Name = "cmsListPeople";
             this.cmsListUsers.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cmsListUsers.Size = new System.Drawing.Size(235, 366);
+            this.cmsListUsers.Size = new System.Drawing.Size(218, 338);
             // 
             // showDetailsToolStripMenuItem
             // 
             this.showDetailsToolStripMenuItem.Image = global::HCMS.Properties.Resources.PersonDetails_32;
             this.showDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.showDetailsToolStripMenuItem.Text = "&Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
@@ -156,7 +156,7 @@
             this.addNewUserToolStripMenuItem.Image = global::HCMS.Properties.Resources.Add_Person_40;
             this.addNewUserToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.addNewUserToolStripMenuItem.Name = "addNewUserToolStripMenuItem";
-            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.addNewUserToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.addNewUserToolStripMenuItem.Text = "&Add New User";
             // 
             // editToolStripMenuItem
@@ -164,7 +164,7 @@
             this.editToolStripMenuItem.Image = global::HCMS.Properties.Resources.edit_321;
             this.editToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.editToolStripMenuItem.Text = "&Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -173,21 +173,30 @@
             this.deleteToolStripMenuItem.Image = global::HCMS.Properties.Resources.Delete_32___Copy;
             this.deleteToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = global::HCMS.Properties.Resources.Password_32;
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(217, 46);
+            this.toolStripMenuItem2.Text = "Change &Password";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(231, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(214, 6);
             // 
             // sendEmailToolStripMenuItem
             // 
             this.sendEmailToolStripMenuItem.Image = global::HCMS.Properties.Resources.send_email_321;
             this.sendEmailToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.sendEmailToolStripMenuItem.Text = "Send &Email";
             // 
             // phoneCallToolStripMenuItem
@@ -195,7 +204,7 @@
             this.phoneCallToolStripMenuItem.Image = global::HCMS.Properties.Resources.call_32___Copy;
             this.phoneCallToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
-            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(234, 46);
+            this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(217, 46);
             this.phoneCallToolStripMenuItem.Text = "Phone &Call";
             // 
             // dgvListUsers
@@ -214,6 +223,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListUsers.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvListUsers.GridColor = System.Drawing.Color.White;
             this.dgvListUsers.Location = new System.Drawing.Point(39, 318);
             this.dgvListUsers.MultiSelect = false;
             this.dgvListUsers.Name = "dgvListUsers";
@@ -318,15 +328,6 @@
             this.cbRole.Size = new System.Drawing.Size(133, 33);
             this.cbRole.TabIndex = 133;
             this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Image = global::HCMS.Properties.Resources.Password_32;
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(234, 46);
-            this.toolStripMenuItem2.Text = "Change &Password";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // frmListUsers
             // 

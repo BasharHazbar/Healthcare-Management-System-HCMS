@@ -1,4 +1,6 @@
-﻿using HCMS.People;
+﻿using HCMS.Doctors;
+using HCMS.Patients;
+using HCMS.People;
 using HCMS.Users;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ namespace HCMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListUsers());
+            Application.Run(new frmLogIn());
         }
     }
 }

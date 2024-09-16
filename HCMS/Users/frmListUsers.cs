@@ -114,12 +114,12 @@ namespace HCMS.Users
                     FilterColumn = "LastName";
                     break;
                 default:
-                    FilterColumn = "None";
+                    FilterColumn = "All";
                     break;
 
             }
 
-            if (txtFindBy.Text.Trim() == "" || cbFindBy.Text == "None")
+            if (txtFindBy.Text.Trim() == "" || FilterColumn == "All")
             {
                 _dtUsers.DefaultView.RowFilter = "";
                 lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
@@ -151,7 +151,7 @@ namespace HCMS.Users
                     break;
             }
 
-            if (FilterValue == "None")
+            if (FilterValue == "None" || FilterColumn == "All")
                 _dtUsers.DefaultView.RowFilter = "";
             else
                 _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, FilterValue);
@@ -177,11 +177,11 @@ namespace HCMS.Users
                     FilterValue = "Doctor";
                     break;
                 default:
-                    FilterValue = "None";
+                    FilterValue = "All";
                     break;
             }
 
-            if (FilterValue == "None")
+            if (FilterValue == "None" || FilterColumn == "All")
             {
                 _dtUsers.DefaultView.RowFilter = "";
             }

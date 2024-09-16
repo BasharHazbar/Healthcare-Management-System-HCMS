@@ -82,6 +82,22 @@ namespace HCMS_Buisness
             return null;
         }
 
+        public static clsUser FindByUserNameAndPassword(string UserName, string Password)
+        {
+            int UserID = -1;    
+            int PersonID = -1;
+            byte Role = 0;
+            DateTime CreatedDate = DateTime.Now;
+            bool IsActive = true;
+
+
+            if (clsUserData.GetUserInfoByUserNameAndPassword(UserName,Password,ref UserID, ref PersonID, ref Role, ref IsActive, ref CreatedDate))
+                return new clsUser(UserID, PersonID, UserName, Password, (enRole)Role, IsActive, CreatedDate);
+
+            else
+                return null;
+        }
+
         public bool Save()
         {
             switch (Mode)
