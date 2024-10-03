@@ -11,7 +11,7 @@ namespace HCMS_Buisness
 {
     public class clsPatient
     {
-        public enum enMode { AddNew = 0, Update = 1 }  
+        private enum enMode { AddNew = 0, Update = 1 }  
         
         private enMode Mode = enMode.AddNew;
 
@@ -51,6 +51,17 @@ namespace HCMS_Buisness
 
             if (clsPatientData.GetPatientInfoByID(PatientID, ref PersonID))
                 return new clsPatient(PatientID,PersonID);
+            else
+                return null;
+        }
+
+        public static clsPatient FindByPersonID(int PersonID)
+        {
+
+            int PatientID = -1;
+
+            if (clsPatientData.GetPatientInfoByPersonID(PersonID, ref PatientID))
+                return new clsPatient(PatientID, PersonID);
             else
                 return null;
         }

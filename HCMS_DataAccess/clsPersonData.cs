@@ -69,6 +69,65 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
+        public static bool GetPersonInfoByFullName(string FullName, ref int PersonID, ref string FirstName, ref string SecondName,
+          ref string ThirdName, ref string LastName, ref DateTime DateOfBirth,
+           ref byte Gender, ref string Address, ref string PhoneNumber, ref string Email, ref string ImagePath)
+        {
+            bool isFound = false;
+
+            string query = @"SELECT * FROM People WHERE 
+                        ( FirstName + ' ' + SecondName + ' ' + ISNULL( ThirdName,'') + ' ' + LastName) = @FullName;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FullName", FullName);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                PersonID = (int)reader["PersonID"];
+                                FirstName = (string)reader["FirstName"];
+                                SecondName = (string)reader["SecondName"];
+
+                                ThirdName = reader["ThirdName"] as string ?? "";
+
+                                LastName = (string)reader["LastName"];
+                                DateOfBirth = (DateTime)reader["DateOfBirth"];
+                                Gender = (byte)reader["Gender"];
+                                Address = (string)reader["Address"];
+                                PhoneNumber = (string)reader["PhoneNumber"];
+
+                                Email = reader["Email"] as string ?? "";
+
+                                ImagePath = reader["ImagePath"] as string ?? "";
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+
+                        isFound = false;
+                    }
+                }
+            }
+
+            return isFound;
+        }
+
         public static int AddNewPerson(string FirstName, string SecondName,
            string ThirdName, string LastName, DateTime DateOfBirth,
            byte Gender, string Address, string PhoneNumber, string Email, string ImagePath)
@@ -200,6 +259,50 @@ namespace HCMS_DataAccess
 			  People.Address, People.PhoneNumber, People.Email, People.ImagePath
               FROM People
                 ORDER BY People.FirstName;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.HasRows)
+
+                            {
+                                dt.Load(reader);
+                            }
+
+                            reader.Close();
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        // Console.WriteLine("Error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+            return dt;
+
+        }
+
+
+        public static DataTable GetAllFullNamePeople()
+        {
+
+            DataTable dt = new DataTable();
+
+            string query = @"Select FullName = FirstName + ' ' + SecondName + ' ' + 
+                                ISNULL( ThirdName,'') +' ' + LastName from People Order by FullName;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {

@@ -6,7 +6,7 @@ namespace HCMS_Buisness
     public class clsDoctor
     {
 
-        public enum enMode { AddNew = 0, Update = 1 };
+        private enum enMode { AddNew = 0, Update = 1 };
 
         private enMode Mode = enMode.AddNew;
         public int DoctorID { set; get; }
@@ -56,7 +56,32 @@ namespace HCMS_Buisness
                 return null;
         }
 
-      public bool Save()
+        public static clsDoctor FindByPersonID(int PersonID)
+        {
+            int DoctorID = -1;
+            string Specialization = "";
+            string ClinicAddress = "";
+
+            if (clsDoctorData.GetDoctorInfoByPersonID(PersonID, ref DoctorID, ref Specialization, ref ClinicAddress))
+                return new clsDoctor(DoctorID, PersonID, Specialization, ClinicAddress);
+            else
+                return null;
+        }
+
+        public static clsDoctor FindByName(string FullName)
+        {
+            int DoctorID = -1;
+            int PersonID = -1;  
+            string Specialization = "";
+            string ClinicAddress = "";
+
+            if (clsDoctorData.GetDoctorInfoByFullName(FullName,ref PersonID,ref DoctorID,ref Specialization,ref ClinicAddress))
+                return new clsDoctor(DoctorID, PersonID, Specialization, ClinicAddress);
+            else
+                return null;
+        }
+
+        public bool Save()
       {
             switch (Mode)
             {

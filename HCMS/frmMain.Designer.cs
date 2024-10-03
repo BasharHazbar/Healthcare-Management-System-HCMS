@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pbBackground = new System.Windows.Forms.PictureBox();
             this.cilinikAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AppointmentInspectionDoctortoolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.patientInspectionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doctotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +42,6 @@
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.signOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbBackground = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackground)).BeginInit();
             this.SuspendLayout();
@@ -62,11 +64,45 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // pbBackground
+            // 
+            this.pbBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbBackground.Image = global::HCMS.Properties.Resources.pexels_fr3nks_305568;
+            this.pbBackground.Location = new System.Drawing.Point(0, 80);
+            this.pbBackground.Name = "pbBackground";
+            this.pbBackground.Size = new System.Drawing.Size(1310, 657);
+            this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbBackground.TabIndex = 2;
+            this.pbBackground.TabStop = false;
+            // 
             // cilinikAddressToolStripMenuItem
             // 
+            this.cilinikAddressToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AppointmentInspectionDoctortoolStripMenuItem2,
+            this.patientInspectionToolStripMenuItem});
+            this.cilinikAddressToolStripMenuItem.Image = global::HCMS.Properties.Resources.Clinik;
+            this.cilinikAddressToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.cilinikAddressToolStripMenuItem.Name = "cilinikAddressToolStripMenuItem";
-            this.cilinikAddressToolStripMenuItem.Size = new System.Drawing.Size(171, 76);
-            this.cilinikAddressToolStripMenuItem.Text = "Cilinik Address";
+            this.cilinikAddressToolStripMenuItem.Size = new System.Drawing.Size(197, 76);
+            this.cilinikAddressToolStripMenuItem.Text = "&Inspection";
+            // 
+            // AppointmentInspectionDoctortoolStripMenuItem2
+            // 
+            this.AppointmentInspectionDoctortoolStripMenuItem2.Image = global::HCMS.Properties.Resources.Chose_Your_Doctor;
+            this.AppointmentInspectionDoctortoolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AppointmentInspectionDoctortoolStripMenuItem2.Name = "AppointmentInspectionDoctortoolStripMenuItem2";
+            this.AppointmentInspectionDoctortoolStripMenuItem2.Size = new System.Drawing.Size(376, 78);
+            this.AppointmentInspectionDoctortoolStripMenuItem2.Text = "&Appointment Inspection";
+            this.AppointmentInspectionDoctortoolStripMenuItem2.Click += new System.EventHandler(this.AppointmentInspectionDoctortoolStripMenuItem2_Click);
+            // 
+            // patientInspectionToolStripMenuItem
+            // 
+            this.patientInspectionToolStripMenuItem.Image = global::HCMS.Properties.Resources.doctor_patient_64;
+            this.patientInspectionToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.patientInspectionToolStripMenuItem.Name = "patientInspectionToolStripMenuItem";
+            this.patientInspectionToolStripMenuItem.Size = new System.Drawing.Size(376, 78);
+            this.patientInspectionToolStripMenuItem.Text = "&Patient Inspection";
+            this.patientInspectionToolStripMenuItem.Click += new System.EventHandler(this.patientInspectionToolStripMenuItem_Click);
             // 
             // doctotsToolStripMenuItem
             // 
@@ -149,16 +185,6 @@
             this.signOutToolStripMenuItem.Text = "Sign &Out";
             this.signOutToolStripMenuItem.Click += new System.EventHandler(this.signOutToolStripMenuItem_Click);
             // 
-            // pbBackground
-            // 
-            this.pbBackground.Image = global::HCMS.Properties.Resources.pexels_fr3nks_305568;
-            this.pbBackground.Location = new System.Drawing.Point(0, 80);
-            this.pbBackground.Name = "pbBackground";
-            this.pbBackground.Size = new System.Drawing.Size(1310, 576);
-            this.pbBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbBackground.TabIndex = 2;
-            this.pbBackground.TabStop = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,7 +193,7 @@
             this.ClientSize = new System.Drawing.Size(1310, 737);
             this.Controls.Add(this.pbBackground);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
@@ -197,5 +223,7 @@
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem signOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AppointmentInspectionDoctortoolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem patientInspectionToolStripMenuItem;
     }
 }

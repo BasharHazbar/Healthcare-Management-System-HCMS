@@ -1,4 +1,6 @@
-﻿using HCMS.Classes;
+﻿using HCMS.Appointment_Inspection;
+using HCMS.Appointment_Inspection.Doctors;
+using HCMS.Classes;
 using HCMS.Doctors;
 using HCMS.Patients;
 using HCMS.People;
@@ -25,7 +27,8 @@ namespace HCMS
         private readonly string[] _ImageFiles = {
             @"D:\HCMS Project\Background Images\Image_1.jpg",
             @"D:\HCMS Project\Background Images\Image_2.jpg",
-            @"D:\HCMS Project\Background Images\Image_3.jpg" 
+            @"D:\HCMS Project\Background Images\Image_3.jpg",
+            @"D:\HCMS Project\Background Images\Image_4.jpg"
         };
         public frmMain(frmLogIn logIn)
         {
@@ -47,7 +50,9 @@ namespace HCMS
 
         private void OnImageChange(object sender, EventArgs e)
         {
+
            
+
             try
             {
                 _ImageIndex = (_ImageIndex + 1) % _ImageFiles.Length;
@@ -102,6 +107,18 @@ namespace HCMS
             _LogIn.Show();
         }
 
-       
+        private void AppointmentInspectionDoctortoolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            //frmAddUpdateInspectionAppointment form = new frmAddUpdateInspectionAppointment();
+
+            FrmAppointmentInspection form = new FrmAppointmentInspection();
+            form.ShowDialog();
+        }
+
+        private void patientInspectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPatientsInspection Form = new FrmPatientsInspection();
+            Form.ShowDialog();  
+        }
     }
 }

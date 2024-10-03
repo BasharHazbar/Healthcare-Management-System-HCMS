@@ -119,14 +119,14 @@ namespace HCMS.Doctors
 
         private void addNewDoctorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateDoctor form = new frmAddUpdateDoctor((int)dgvListDoctor.CurrentRow.Cells[0].Value);
+            frmAddUpdateDoctor form = new frmAddUpdateDoctor();
             form.ShowDialog();
             frmListDoctor_Load(null,null);
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateDoctor form = new frmAddUpdateDoctor();
+            frmAddUpdateDoctor form = new frmAddUpdateDoctor((int)dgvListDoctor.CurrentRow.Cells[0].Value);
             form.ShowDialog();
             frmListDoctor_Load(null, null);
         }

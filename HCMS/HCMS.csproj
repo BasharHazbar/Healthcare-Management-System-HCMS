@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.Designer.cs">
+      <DependentUpon>frmMakeMedicalRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\FrmPatientsInspection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\FrmPatientsInspection.Designer.cs">
+      <DependentUpon>FrmPatientsInspection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Patient\frmAddUpdateInspectionAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Patient\frmAddUpdateInspectionAppointment.Designer.cs">
+      <DependentUpon>frmAddUpdateInspectionAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Patient\FrmAppointmentInspection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Patient\FrmAppointmentInspection.Designer.cs">
+      <DependentUpon>FrmAppointmentInspection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\clsGlobal.cs" />
     <Compile Include="Classes\clsUtil.cs" />
     <Compile Include="Classes\clsValidatoin.cs" />
@@ -165,6 +189,18 @@
     <Compile Include="Users\frmUserDetails.Designer.cs">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.resx">
+      <DependentUpon>frmMakeMedicalRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\FrmPatientsInspection.resx">
+      <DependentUpon>FrmPatientsInspection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Patient\frmAddUpdateInspectionAppointment.resx">
+      <DependentUpon>frmAddUpdateInspectionAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Patient\FrmAppointmentInspection.resx">
+      <DependentUpon>FrmAppointmentInspection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Doctors\Controls\ctrlDoctorDetails.resx">
       <DependentUpon>ctrlDoctorDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -499,6 +535,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\closeBlack32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add Patient 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inspection Appointment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clinik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chose Your Doctor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete 32 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inspection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Inspection1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-patient 64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-patient 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-patient 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor-patient 642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doctor 48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

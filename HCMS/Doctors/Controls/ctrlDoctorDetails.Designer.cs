@@ -28,23 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlPersonCard1 = new HCMS.ctrlPersonCard();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblDoctorID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblClinicAddress = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblSpecialization = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDoctorID = new System.Windows.Forms.Label();
+            this.ctrlPersonCard1 = new HCMS.ctrlPersonCard();
             this.gbUserInfo.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ctrlPersonCard1
-            // 
-            this.ctrlPersonCard1.Location = new System.Drawing.Point(0, 0);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
-            this.ctrlPersonCard1.Size = new System.Drawing.Size(995, 279);
-            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // gbUserInfo
             // 
@@ -61,6 +54,28 @@
             this.gbUserInfo.TabIndex = 142;
             this.gbUserInfo.TabStop = false;
             this.gbUserInfo.Text = "Doctor Information";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(123, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 25);
+            this.label2.TabIndex = 142;
+            this.label2.Text = "Doctor ID:";
+            // 
+            // lblDoctorID
+            // 
+            this.lblDoctorID.AutoSize = true;
+            this.lblDoctorID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoctorID.Location = new System.Drawing.Point(240, 41);
+            this.lblDoctorID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDoctorID.Name = "lblDoctorID";
+            this.lblDoctorID.Size = new System.Drawing.Size(68, 25);
+            this.lblDoctorID.TabIndex = 143;
+            this.lblDoctorID.Text = "[????]";
             // 
             // label1
             // 
@@ -106,27 +121,13 @@
             this.lblSpecialization.TabIndex = 139;
             this.lblSpecialization.Text = "[????]";
             // 
-            // label2
+            // ctrlPersonCard1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(123, 41);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 25);
-            this.label2.TabIndex = 142;
-            this.label2.Text = "Doctor ID:";
-            // 
-            // lblDoctorID
-            // 
-            this.lblDoctorID.AutoSize = true;
-            this.lblDoctorID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoctorID.Location = new System.Drawing.Point(240, 41);
-            this.lblDoctorID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDoctorID.Name = "lblDoctorID";
-            this.lblDoctorID.Size = new System.Drawing.Size(68, 25);
-            this.lblDoctorID.TabIndex = 143;
-            this.lblDoctorID.Text = "[????]";
+            this.ctrlPersonCard1.EditPersonInfoEnabled = true;
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(995, 279);
+            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // ctrlDoctorDetails
             // 

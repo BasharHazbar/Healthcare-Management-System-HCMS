@@ -134,7 +134,6 @@
             this.txtClinicAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtClinicAddress.MaxLength = 50;
             this.txtClinicAddress.Name = "txtClinicAddress";
-            this.txtClinicAddress.PasswordChar = '*';
             this.txtClinicAddress.Size = new System.Drawing.Size(232, 30);
             this.txtClinicAddress.TabIndex = 132;
             this.txtClinicAddress.Validating += new System.ComponentModel.CancelEventHandler(this.txtClinicAddress_Validating);
@@ -168,7 +167,9 @@
             // 
             // ctrlPersonCardWithFilter
             // 
+            this.ctrlPersonCardWithFilter.AnyPerson = HCMS.People.Controls.ctrlPersonCardWithFilter.enAnyPerson.Person;
             this.ctrlPersonCardWithFilter.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter.EditPersonInfoEnabled = true;
             this.ctrlPersonCardWithFilter.FilterEnabled = true;
             this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(31, 26);
             this.ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";

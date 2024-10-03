@@ -104,7 +104,7 @@
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(144, 732);
+            this.lblRecordsCount.Location = new System.Drawing.Point(144, 724);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(74, 25);
             this.lblRecordsCount.TabIndex = 128;
@@ -114,7 +114,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(34, 732);
+            this.label22.Location = new System.Drawing.Point(34, 724);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(104, 25);
             this.label22.TabIndex = 127;
@@ -261,7 +261,7 @@
             this.btnAddNewUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddNewUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewUser.Image = global::HCMS.Properties.Resources.Add_New_User_72;
+            this.btnAddNewUser.Image = global::HCMS.Properties.Resources.Add_New_User_32;
             this.btnAddNewUser.Location = new System.Drawing.Point(1255, 240);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(81, 66);

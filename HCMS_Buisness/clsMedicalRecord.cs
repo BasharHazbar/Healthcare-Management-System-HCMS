@@ -11,7 +11,7 @@ namespace HCMS_Buisness
     public class clsMedicalRecord
     {
 
-        public enum enMode { AddNew = 0, Update = 1 }
+        private enum enMode { AddNew = 0, Update = 1 }
 
         private enMode Mode = enMode.AddNew;
 
@@ -45,8 +45,8 @@ namespace HCMS_Buisness
 
         private bool _AddNewMedicalRecord()
         {
-            this.MedicalRecordID = clsMedicalRecordData.AddNewMedicalRecord(this.MedicalRecordID,this.Diagnosis,this.VisitDescription);
-            return this.AppointmentID != -1;
+            this.MedicalRecordID = clsMedicalRecordData.AddNewMedicalRecord(this.AppointmentID,this.Diagnosis,this.VisitDescription);
+            return this.MedicalRecordID != -1;
         }
 
         private bool _UpdateMedicalRecord()

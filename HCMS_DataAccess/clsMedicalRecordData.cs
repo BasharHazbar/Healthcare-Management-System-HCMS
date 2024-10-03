@@ -65,7 +65,7 @@ namespace HCMS_DataAccess
                                        ,Diagnosis
                                        ,VisitDescription)
                                  VALUES (@AppointmentID,@Diagnosis,@VisitDescription)
-                     SELECT SCOPE_IDENTITY();";
+                                  SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
@@ -73,8 +73,7 @@ namespace HCMS_DataAccess
                 {
                     command.Parameters.AddWithValue("@AppointmentID", AppointmentID);
                     command.Parameters.AddWithValue("@Diagnosis", Diagnosis);
-                    command.Parameters.AddWithValue("@PersonID", VisitDescription);
-
+                    command.Parameters.AddWithValue("@VisitDescription", VisitDescription);
 
                     try
                     {

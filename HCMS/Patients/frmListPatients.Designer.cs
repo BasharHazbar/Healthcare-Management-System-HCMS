@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFindBy = new System.Windows.Forms.TextBox();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
@@ -40,16 +40,16 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsListPatient = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.dgvListPatients = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnAddNewPatient = new System.Windows.Forms.Button();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewDoctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DeletetoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.phoneCallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvListPatients = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAddNewPatient = new System.Windows.Forms.Button();
             this.cmsListPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -111,7 +111,7 @@
             // 
             this.lblRecordsCount.AutoSize = true;
             this.lblRecordsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordsCount.Location = new System.Drawing.Point(155, 733);
+            this.lblRecordsCount.Location = new System.Drawing.Point(155, 725);
             this.lblRecordsCount.Name = "lblRecordsCount";
             this.lblRecordsCount.Size = new System.Drawing.Size(74, 25);
             this.lblRecordsCount.TabIndex = 150;
@@ -121,7 +121,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(45, 733);
+            this.label22.Location = new System.Drawing.Point(45, 725);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(104, 25);
             this.label22.TabIndex = 149;
@@ -152,83 +152,6 @@
             this.cmsListPatient.Name = "cmsListPeople";
             this.cmsListPatient.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.cmsListPatient.Size = new System.Drawing.Size(214, 292);
-            // 
-            // dgvListPatients
-            // 
-            this.dgvListPatients.AllowUserToAddRows = false;
-            this.dgvListPatients.AllowUserToDeleteRows = false;
-            this.dgvListPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dgvListPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListPatients.ContextMenuStrip = this.cmsListPatient;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListPatients.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvListPatients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvListPatients.GridColor = System.Drawing.Color.White;
-            this.dgvListPatients.Location = new System.Drawing.Point(50, 319);
-            this.dgvListPatients.MultiSelect = false;
-            this.dgvListPatients.Name = "dgvListPatients";
-            this.dgvListPatients.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvListPatients.RowHeadersWidth = 51;
-            this.dgvListPatients.RowTemplate.Height = 24;
-            this.dgvListPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListPatients.Size = new System.Drawing.Size(1297, 389);
-            this.dgvListPatients.TabIndex = 146;
-            this.dgvListPatients.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListPatients_CellDoubleClick);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::HCMS.Properties.Resources.Close_32___Copy;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1202, 715);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(145, 44);
-            this.btnClose.TabIndex = 148;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::HCMS.Properties.Resources.Patient_Image;
-            this.pictureBox1.Location = new System.Drawing.Point(569, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 201);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 145;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnAddNewPatient
-            // 
-            this.btnAddNewPatient.BackColor = System.Drawing.Color.White;
-            this.btnAddNewPatient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddNewPatient.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewPatient.Image = global::HCMS.Properties.Resources.Add_Patient_64;
-            this.btnAddNewPatient.Location = new System.Drawing.Point(1266, 241);
-            this.btnAddNewPatient.Name = "btnAddNewPatient";
-            this.btnAddNewPatient.Size = new System.Drawing.Size(81, 66);
-            this.btnAddNewPatient.TabIndex = 147;
-            this.btnAddNewPatient.UseVisualStyleBackColor = false;
-            this.btnAddNewPatient.Click += new System.EventHandler(this.btnAddNewPatient_Click);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -280,6 +203,83 @@
             this.phoneCallToolStripMenuItem.Name = "phoneCallToolStripMenuItem";
             this.phoneCallToolStripMenuItem.Size = new System.Drawing.Size(213, 46);
             this.phoneCallToolStripMenuItem.Text = "Phone &Call";
+            // 
+            // dgvListPatients
+            // 
+            this.dgvListPatients.AllowUserToAddRows = false;
+            this.dgvListPatients.AllowUserToDeleteRows = false;
+            this.dgvListPatients.BackgroundColor = System.Drawing.Color.White;
+            this.dgvListPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListPatients.ContextMenuStrip = this.cmsListPatient;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListPatients.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListPatients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvListPatients.GridColor = System.Drawing.Color.White;
+            this.dgvListPatients.Location = new System.Drawing.Point(50, 319);
+            this.dgvListPatients.MultiSelect = false;
+            this.dgvListPatients.Name = "dgvListPatients";
+            this.dgvListPatients.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvListPatients.RowHeadersWidth = 51;
+            this.dgvListPatients.RowTemplate.Height = 24;
+            this.dgvListPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListPatients.Size = new System.Drawing.Size(1297, 389);
+            this.dgvListPatients.TabIndex = 146;
+            this.dgvListPatients.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListPatients_CellDoubleClick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::HCMS.Properties.Resources.Close_32___Copy;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1202, 715);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(145, 44);
+            this.btnClose.TabIndex = 148;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HCMS.Properties.Resources.Patient_Image;
+            this.pictureBox1.Location = new System.Drawing.Point(569, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(251, 201);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 145;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnAddNewPatient
+            // 
+            this.btnAddNewPatient.BackColor = System.Drawing.Color.White;
+            this.btnAddNewPatient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddNewPatient.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNewPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewPatient.Image = global::HCMS.Properties.Resources.Add_Patient_64;
+            this.btnAddNewPatient.Location = new System.Drawing.Point(1266, 241);
+            this.btnAddNewPatient.Name = "btnAddNewPatient";
+            this.btnAddNewPatient.Size = new System.Drawing.Size(81, 66);
+            this.btnAddNewPatient.TabIndex = 147;
+            this.btnAddNewPatient.UseVisualStyleBackColor = false;
+            this.btnAddNewPatient.Click += new System.EventHandler(this.btnAddNewPatient_Click);
             // 
             // frmListPatients
             // 

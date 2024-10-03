@@ -53,6 +53,95 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
+
+        public static bool GetDoctorInfoByPersonID(int PersonID, ref int DoctorID, ref string Specialization, ref string ClinicAddress)
+        {
+            bool isFound = false;
+
+            string query = "Select * from Doctors where PersonID = @PersonID;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                DoctorID = (int)reader["DoctorID"];
+                                PersonID = (int)reader["PersonID"];
+                                Specialization = (string)reader["Specialization"];
+                                ClinicAddress = (string)reader["ClinicAddress"];
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+
+                        isFound = false;
+                    }
+                }
+            }
+            return isFound;
+        }
+
+        public static bool GetDoctorInfoByFullName(string FullName,ref int PersonID, ref int DoctorID, ref string Specialization, ref string ClinicAddress)
+        {
+            bool isFound = false;
+
+            string query = @"Select d.* from Doctors d join People p on p.PersonID = d.PersonID
+                        where ( p.FirstName + ' ' + p.SecondName + ' ' + ISNULL( p.ThirdName,'') + ' ' + p.LastName) = @FullName;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@FullName", FullName);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                DoctorID = (int)reader["DoctorID"];
+                                PersonID = (int)reader["PersonID"];
+                                Specialization = (string)reader["Specialization"];
+                                ClinicAddress = (string)reader["ClinicAddress"];
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+
+                        isFound = false;
+                    }
+                }
+            }
+            return isFound;
+        }
+
+
         public static int AddNewDoctor(int PersonID, string Specialization, string ClinicAddress)
         {
             int DoctorID = -1;

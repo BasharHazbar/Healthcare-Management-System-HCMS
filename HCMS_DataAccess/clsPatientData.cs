@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace HCMS_DataAccess
 {
@@ -51,6 +47,48 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
+        public static bool GetPatientInfoByPersonID(int PersonID, ref int PatientID)
+        {
+            bool isFound = false;
+
+            string query = "Select * from Patients where PersonID = @PersonID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                PatientID = (int)reader["PatientID"];
+                                PersonID = (int)reader["PersonID"];
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+
+                        isFound = false;
+                    }
+                }
+            }
+            return isFound;
+        }
+
+
         public static int AddNewPatient(int PersonID)
         {
             int PatientID = -1;
@@ -66,7 +104,7 @@ namespace HCMS_DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@PersonID", PersonID);
-                    
+
 
                     try
                     {
@@ -103,7 +141,7 @@ namespace HCMS_DataAccess
                 {
                     command.Parameters.AddWithValue("@PersonID", PersonID);
                     command.Parameters.AddWithValue("@PatientID", PatientID);
-                    
+
 
                     try
                     {

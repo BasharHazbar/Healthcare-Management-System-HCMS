@@ -11,7 +11,7 @@ namespace HCMS_Buisness
 {
     public class clsPrescription
     {
-        public enum enMode { AddNew = 0, Update = 1 }
+        private enum enMode { AddNew = 0, Update = 1 }
 
         private enMode Mode = enMode.AddNew;
 

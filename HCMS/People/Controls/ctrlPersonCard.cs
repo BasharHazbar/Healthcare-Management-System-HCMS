@@ -19,7 +19,7 @@ namespace HCMS
 
         private clsPerson _Person;
 
-        private int _PersonID = -1;
+        private int _PersonID;
 
         public int PersonID
         {
@@ -36,6 +36,13 @@ namespace HCMS
             InitializeComponent();
         }
 
+        private bool _EditPersonInfoEnabled;
+        public bool EditPersonInfoEnabled
+        {
+            get { return _EditPersonInfoEnabled; }
+            set { _EditPersonInfoEnabled = value; if (_Person != null) { llEditPersonInfo.Enabled = _EditPersonInfoEnabled; } }
+        }
+
         public void LoadPersonInfo(int PersonID)
         {
             _Person = clsPerson.Find(PersonID);
@@ -48,6 +55,20 @@ namespace HCMS
 
             _FillPersonInfo();
         }
+
+        public void LoadPersonInfo(string FullName)
+        {
+            _Person = clsPerson.Find(FullName);
+            if (_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No Person with Name = " + FullName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            _FillPersonInfo();
+        }
+
 
         void _LoadPersonImage()
         {
@@ -68,7 +89,6 @@ namespace HCMS
 
         private void _FillPersonInfo()
         {
-            llEditPersonInfo.Enabled = true;
             _PersonID = _Person.PersonID;
             lblPersonID.Text = _Person.PersonID.ToString();
             lblFullName.Text = _Person.FullName;

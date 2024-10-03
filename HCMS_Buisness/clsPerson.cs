@@ -10,7 +10,7 @@ namespace HCMS_Buisness
 {
     public class clsPerson
     {
-        public enum enMode { AddNew = 0, Update = 1 };
+        private enum enMode { AddNew = 0, Update = 1 };
 
         private enMode Mode = enMode.AddNew;
 
@@ -38,8 +38,6 @@ namespace HCMS_Buisness
         public string Email { set; get; }
 
         public string ImagePath { set; get; }
-
-   
 
         public clsPerson()
 
@@ -118,6 +116,28 @@ namespace HCMS_Buisness
                 return null;
         }
 
+        public static clsPerson Find(string FullName)
+        {
+            int PersonID = -1;
+            string FirstName = "", SecondName = "", ThirdName = "", LastName = "",
+            Email = "", PhoneNumber = "", Address = "", ImagePath = "";
+            DateTime DateOfBirth = DateTime.Now;
+            byte Gender = 0;
+
+            bool IsFound = clsPersonData.GetPersonInfoByFullName
+                                (
+                                    FullName,ref PersonID, ref FirstName, ref SecondName,
+                                    ref ThirdName, ref LastName, ref DateOfBirth,
+                                    ref Gender, ref Address, ref PhoneNumber, ref Email, ref ImagePath
+                                );
+
+            if (IsFound)
+                return new clsPerson(PersonID, FirstName, SecondName, ThirdName, LastName
+                    , DateOfBirth, Gender, Address, PhoneNumber, Email, ImagePath);
+            else
+                return null;
+        }
+
         public bool Save()
         {
             switch (Mode)
@@ -146,6 +166,12 @@ namespace HCMS_Buisness
         public static DataTable GetAllPeople()
         {
             return clsPersonData.GetAllPeople();
+        }
+
+
+        public static DataTable GetAllFullNamePeople()
+        {
+            return clsPersonData.GetAllFullNamePeople();
         }
 
         public bool DeletePerson()

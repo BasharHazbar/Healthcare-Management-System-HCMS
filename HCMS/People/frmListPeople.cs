@@ -66,6 +66,8 @@ namespace HCMS.People
 
                 dgvListPeople.Columns[8].HeaderText = "Phone";
                 dgvListPeople.Columns[8].Width = 120;
+
+                lblRecordsCount.Text = dgvListPeople.Rows.Count.ToString();
             }
         }
 

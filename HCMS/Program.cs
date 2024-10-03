@@ -1,4 +1,5 @@
-﻿using HCMS.Doctors;
+﻿using HCMS.Appointment_Inspection;
+using HCMS.Doctors;
 using HCMS.Patients;
 using HCMS.People;
 using HCMS.Users;

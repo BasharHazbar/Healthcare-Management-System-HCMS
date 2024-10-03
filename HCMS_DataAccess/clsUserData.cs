@@ -22,6 +22,7 @@ namespace HCMS_DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@UserID", UserID);
+
                     try
                     {
                         connection.Open();
@@ -37,6 +38,7 @@ namespace HCMS_DataAccess
                                 UserName = (string)reader["UserName"];
                                 Password = (string)reader["Password"];
                                 Role = (byte)reader["Role"];
+                                IsActive = (bool)reader["IsActive"];
                                 CreatedDate = (DateTime)reader["CreatedDate"];
                             }
                             else
@@ -85,6 +87,7 @@ namespace HCMS_DataAccess
                                 PersonID = (int)reader["PersonID"];
                                 UserName = (string)reader["UserName"];
                                 Password = (string)reader["Password"];
+                                IsActive = (bool)reader["IsActive"];
                                 Role = (byte)reader["Role"];
                                 CreatedDate = (DateTime)reader["CreatedDate"];
                             }
@@ -200,8 +203,8 @@ namespace HCMS_DataAccess
             string query = @"select UserID,u.PersonID, FullName = p.FirstName + ' ' + p.SecondName + ' ' + 
                                 ISNULL( p.ThirdName,'') +' ' + p.LastName,
                                 u.UserName,
-                                case when u.Role = 0 then 'Admin' when u.Role = 1 then 'Patient' 
-                                when u.Role = 2 then 'Doctor'else 'Unknown' end as Role
+                                case when u.Role = 0 then 'Admin' when u.Role = 1 then 'Doctor' 
+                                when u.Role = 2 then 'Patient' else 'Unknown' end as Role
                                 ,u.IsActive
                                 from Users u
                                 join People p on p.PersonID = u.PersonID
