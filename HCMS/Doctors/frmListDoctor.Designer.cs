@@ -71,7 +71,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListDoctor.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListDoctor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvListDoctor.GridColor = System.Drawing.Color.White;
+            this.dgvListDoctor.GridColor = System.Drawing.Color.Black;
             this.dgvListDoctor.Location = new System.Drawing.Point(49, 318);
             this.dgvListDoctor.MultiSelect = false;
             this.dgvListDoctor.Name = "dgvListDoctor";

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.llEditPersonInfo = new System.Windows.Forms.LinkLabel();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblDateOfBirth = new System.Windows.Forms.Label();
             this.lblGendor = new System.Windows.Forms.Label();
@@ -60,18 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // llEditPersonInfo
-            // 
-            this.llEditPersonInfo.AutoSize = true;
-            this.llEditPersonInfo.Enabled = false;
-            this.llEditPersonInfo.Location = new System.Drawing.Point(795, 35);
-            this.llEditPersonInfo.Name = "llEditPersonInfo";
-            this.llEditPersonInfo.Size = new System.Drawing.Size(149, 25);
-            this.llEditPersonInfo.TabIndex = 139;
-            this.llEditPersonInfo.TabStop = true;
-            this.llEditPersonInfo.Text = "Edit Person Info";
-            this.llEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llEditPersonInfo_LinkClicked);
             // 
             // lblPhone
             // 
@@ -231,7 +218,6 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.llEditPersonInfo);
             this.groupBox1.Controls.Add(this.lblPhone);
             this.groupBox1.Controls.Add(this.lblDateOfBirth);
             this.groupBox1.Controls.Add(this.lblGendor);
@@ -358,8 +344,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.LinkLabel llEditPersonInfo;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label lblDateOfBirth;
         private System.Windows.Forms.Label lblGendor;

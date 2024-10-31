@@ -133,7 +133,7 @@ namespace HCMS_Buisness
             return clsUserData.DeleteUser(UserID);  
         }
 
-        public bool DeleteUser()
+        public bool Delete()
         {
             return clsUserData.DeleteUser(this.UserID);
         }

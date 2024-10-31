@@ -67,7 +67,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListAppointments.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListAppointments.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvListAppointments.GridColor = System.Drawing.Color.White;
+            this.dgvListAppointments.GridColor = System.Drawing.Color.Black;
             this.dgvListAppointments.Location = new System.Drawing.Point(32, 340);
             this.dgvListAppointments.MultiSelect = false;
             this.dgvListAppointments.Name = "dgvListAppointments";

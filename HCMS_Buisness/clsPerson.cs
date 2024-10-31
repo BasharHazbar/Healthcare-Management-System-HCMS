@@ -174,7 +174,7 @@ namespace HCMS_Buisness
             return clsPersonData.GetAllFullNamePeople();
         }
 
-        public bool DeletePerson()
+        public bool Delete()
         {
             return clsPersonData.DeletePerson(this.PersonID);
         }

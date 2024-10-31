@@ -1,6 +1,6 @@
 ﻿namespace HCMS.Appointment_Inspection.Doctors
 {
-    partial class FrmPatientsInspection
+    partial class frmPatientsInspection
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.CancelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.InspectionToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeMedicalRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makePrescriptionMedicalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtFindBy = new System.Windows.Forms.TextBox();
             this.cbFindBy = new System.Windows.Forms.ComboBox();
             this.lblFindBy = new System.Windows.Forms.Label();
@@ -45,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.makeMedicalRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListPatientInspection)).BeginInit();
             this.cmsPatientInspection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,7 +68,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListPatientInspection.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListPatientInspection.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvListPatientInspection.GridColor = System.Drawing.Color.White;
+            this.dgvListPatientInspection.GridColor = System.Drawing.Color.Black;
             this.dgvListPatientInspection.Location = new System.Drawing.Point(41, 338);
             this.dgvListPatientInspection.MultiSelect = false;
             this.dgvListPatientInspection.Name = "dgvListPatientInspection";
@@ -97,7 +98,8 @@
             this.InspectionToolStripMenuItem2});
             this.cmsPatientInspection.Name = "cmsListPeople";
             this.cmsPatientInspection.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.cmsPatientInspection.Size = new System.Drawing.Size(246, 200);
+            this.cmsPatientInspection.Size = new System.Drawing.Size(246, 172);
+            this.cmsPatientInspection.Opening += new System.ComponentModel.CancelEventHandler(this.cmsPatientInspection_Opening);
             // 
             // showDoctorDetailsToolStripMenuItem
             // 
@@ -125,13 +127,31 @@
             // InspectionToolStripMenuItem2
             // 
             this.InspectionToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.makeMedicalRecordToolStripMenuItem});
+            this.makeMedicalRecordToolStripMenuItem,
+            this.makePrescriptionMedicalToolStripMenuItem});
             this.InspectionToolStripMenuItem2.Image = global::HCMS.Properties.Resources.doctor_48;
             this.InspectionToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.InspectionToolStripMenuItem2.Name = "InspectionToolStripMenuItem2";
             this.InspectionToolStripMenuItem2.Size = new System.Drawing.Size(245, 54);
             this.InspectionToolStripMenuItem2.Text = "&Inspection Patient";
-            this.InspectionToolStripMenuItem2.Click += new System.EventHandler(this.InspectionToolStripMenuItem2_Click);
+            // 
+            // makeMedicalRecordToolStripMenuItem
+            // 
+            this.makeMedicalRecordToolStripMenuItem.Image = global::HCMS.Properties.Resources.medical_record_32;
+            this.makeMedicalRecordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.makeMedicalRecordToolStripMenuItem.Name = "makeMedicalRecordToolStripMenuItem";
+            this.makeMedicalRecordToolStripMenuItem.Size = new System.Drawing.Size(279, 38);
+            this.makeMedicalRecordToolStripMenuItem.Text = "Make Medical Record";
+            this.makeMedicalRecordToolStripMenuItem.Click += new System.EventHandler(this.makeMedicalRecordToolStripMenuItem_Click);
+            // 
+            // makePrescriptionMedicalToolStripMenuItem
+            // 
+            this.makePrescriptionMedicalToolStripMenuItem.Image = global::HCMS.Properties.Resources.Prescription_32;
+            this.makePrescriptionMedicalToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.makePrescriptionMedicalToolStripMenuItem.Name = "makePrescriptionMedicalToolStripMenuItem";
+            this.makePrescriptionMedicalToolStripMenuItem.Size = new System.Drawing.Size(279, 38);
+            this.makePrescriptionMedicalToolStripMenuItem.Text = "Make Prescription Medical";
+            this.makePrescriptionMedicalToolStripMenuItem.Click += new System.EventHandler(this.makePrescriptionMedicalToolStripMenuItem_Click);
             // 
             // txtFindBy
             // 
@@ -233,14 +253,7 @@
             this.pictureBox1.TabIndex = 149;
             this.pictureBox1.TabStop = false;
             // 
-            // makeMedicalRecordToolStripMenuItem
-            // 
-            this.makeMedicalRecordToolStripMenuItem.Name = "makeMedicalRecordToolStripMenuItem";
-            this.makeMedicalRecordToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
-            this.makeMedicalRecordToolStripMenuItem.Text = "Make Medical Record";
-            this.makeMedicalRecordToolStripMenuItem.Click += new System.EventHandler(this.makeMedicalRecordToolStripMenuItem_Click);
-            // 
-            // FrmPatientsInspection
+            // frmPatientsInspection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -257,7 +270,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FrmPatientsInspection";
+            this.Name = "frmPatientsInspection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patients Inspection";
             this.Load += new System.EventHandler(this.FrmPatientsInspection_Load);
@@ -286,5 +299,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem InspectionToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem makeMedicalRecordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makePrescriptionMedicalToolStripMenuItem;
     }
 }

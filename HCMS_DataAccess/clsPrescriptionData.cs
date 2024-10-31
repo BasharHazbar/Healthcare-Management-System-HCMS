@@ -12,8 +12,8 @@ namespace HCMS_DataAccess
     public class clsPrescriptionData
     {
 
-        public static bool GetPrescriptionInfoByID(int PrescriptionID,ref int MedicalRecordID,ref string Treatment,
-            ref string Dosage,ref string Frequency, ref DateTime StartDate, ref DateTime EndDate, ref string SpecialInstructions)
+        public static bool GetPrescriptionInfoByID(int PrescriptionID, ref int MedicalRecordID, ref string MedicationDetails,
+           ref string Dosage,ref DateTime PrescriptionDate,ref string SpecialInstructions)
         {
             bool isFound = false;
 
@@ -35,20 +35,12 @@ namespace HCMS_DataAccess
                                 isFound = true;
 
                                 PrescriptionID = (int)reader["AppointmentID"];
-
                                 MedicalRecordID = (int)reader["MedicalRecordID"];
-
-                                Treatment = (string)reader["Treatment"];
-
+                                MedicationDetails = (string)reader["MedicationDetails"];
                                 Dosage = (string)reader["Dosage"];
-
-                                Frequency = (string)reader["Frequency"];
-
-                                StartDate = (DateTime)reader["StartDate"];
-
-                                EndDate = (DateTime)reader["EndDate"];
-
+                                PrescriptionDate = (DateTime)reader["PrescriptionDate"];
                                 SpecialInstructions = (string)reader["SpecialInstructions"];
+
                             }
                             else
                             {
@@ -67,22 +59,23 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
-        public static int AddNewPrescription(int MedicalRecordID, string Treatment,string Dosage,
-            string Frequency, DateTime StartDate, DateTime EndDate, string SpecialInstructions)
+        public static int AddNewPrescription(int MedicalRecordID, string MedicationDetails,
+            string Dosage, string SpecialInstructions)
         {
             int PrescriptionID = -1;
 
-            string query = @" INSERT INTO Prescriptions
-                                   (MedicalRecordID
-                                   ,Treatment
-                                   ,Dosage
-                                   ,Frequency
-                                   ,StartDate
-                                   ,EndDate
-                                   ,SpecialInstructions)
-                             VALUES
-                                   (@MedicalRecordID,@Treatment,@Dosage,@Frequency,
-                                    @StartDate,@EndDate,@SpecialInstructions)
+            string query = @"INSERT INTO [dbo].[Prescription]
+                                           ([MedicalRecordID]
+                                           ,[MedicationDetails]
+                                           ,[Dosage]
+                                           ,[PrescriptionDate]
+                                           ,[SpecialInstructions])
+                                     VALUES
+                                           (@MedicalRecordID,
+                                           @MedicationDetails,
+                                           @Dosage,
+                                           @PrescriptionDate,
+                                           @SpecialInstructions);
                                         SELECT SCOPE_IDENTITY();";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
@@ -90,11 +83,9 @@ namespace HCMS_DataAccess
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
-                    command.Parameters.AddWithValue("@Treatment", Treatment);
+                    command.Parameters.AddWithValue("@MedicationDetails", MedicationDetails);
                     command.Parameters.AddWithValue("@Dosage", Dosage);
-                    command.Parameters.AddWithValue("@Frequency", Frequency);
-                    command.Parameters.AddWithValue("@StartDate", StartDate);
-                    command.Parameters.AddWithValue("@EndDate", EndDate);
+                    command.Parameters.AddWithValue("@PrescriptionDate", DateTime.Now);
                     command.Parameters.AddWithValue("@SpecialInstructions", SpecialInstructions);
 
                     try
@@ -110,7 +101,7 @@ namespace HCMS_DataAccess
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Error: " + ex.Message);
+                        Console.WriteLine("Error: " + ex);
                     }
                 }
             }
@@ -118,8 +109,8 @@ namespace HCMS_DataAccess
             return PrescriptionID;
         }
 
-        public static bool UpdatePrescription(int PrescriptionID,int MedicalRecordID, string Treatment, string Dosage,
-            string Frequency, DateTime StartDate, DateTime EndDate, string SpecialInstructions)
+        public static bool UpdatePrescription(int PrescriptionID,int MedicalRecordID, string MedicationDetails,
+            string Dosage, DateTime PrescriptionDate, string SpecialInstructions)
         {
             int rowsAffected = 0;
 
@@ -127,9 +118,7 @@ namespace HCMS_DataAccess
                                    SET MedicalRecordID = @MedicalRecordID
                                       ,Treatment = @Treatment
                                       ,Dosage = @Dosage
-                                      ,Frequency = @Frequency
                                       ,StartDate = @StartDate
-                                      ,EndDate = @EndDate
                                       ,SpecialInstructions = @SpecialInstructions
                                  WHERE PrescriptionID = @PrescriptionID";
 
@@ -139,11 +128,9 @@ namespace HCMS_DataAccess
                 {
                     command.Parameters.AddWithValue("@PrescriptionID", PrescriptionID);
                     command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
-                    command.Parameters.AddWithValue("@Treatment", Treatment);
+                    command.Parameters.AddWithValue("@MedicationDetails", MedicationDetails);
                     command.Parameters.AddWithValue("@Dosage", Dosage);
-                    command.Parameters.AddWithValue("@Frequency", Frequency);
-                    command.Parameters.AddWithValue("@StartDate", StartDate);
-                    command.Parameters.AddWithValue("@EndDate", EndDate);
+                    command.Parameters.AddWithValue("@StartDate", PrescriptionDate);
                     command.Parameters.AddWithValue("@SpecialInstructions", SpecialInstructions);
 
                     try
@@ -164,17 +151,19 @@ namespace HCMS_DataAccess
 
 
 
-        public static DataTable GetAllPrescriptions()
+        public static DataTable GetAllPrescriptionsPerMedicalRecord(int MedicalRecordID)
         {
 
             DataTable dt = new DataTable();
 
-            string query = @"SELECT * from Prescriptions;";
+            string query = @"Select PrescriptionID,MedicationDetails,Dosage,PrescriptionDate,SpecialInstructions from Prescription
+                            Where MedicalRecordID = @MedicalRecordID;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
                     try
                     {
                         connection.Open();
@@ -194,7 +183,7 @@ namespace HCMS_DataAccess
 
                     catch (Exception ex)
                     {
-                        // Console.WriteLine("Error: " + ex.Message);
+                        Console.WriteLine("Error: " + ex.Message);
                     }
                     finally
                     {

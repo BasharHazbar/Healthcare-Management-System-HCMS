@@ -123,7 +123,6 @@
             // 
             // ctrlPersonCard1
             // 
-            this.ctrlPersonCard1.EditPersonInfoEnabled = true;
             this.ctrlPersonCard1.Location = new System.Drawing.Point(0, 0);
             this.ctrlPersonCard1.Name = "ctrlPersonCard1";
             this.ctrlPersonCard1.Size = new System.Drawing.Size(995, 279);

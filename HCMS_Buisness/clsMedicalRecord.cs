@@ -19,6 +19,8 @@ namespace HCMS_Buisness
 
         public int AppointmentID { get; set; }
 
+        public clsAppointment AppointmentInfo { get; }
+
         public string Diagnosis { get; set; }
 
         public string VisitDescription { get; set; }
@@ -37,9 +39,10 @@ namespace HCMS_Buisness
         public clsMedicalRecord(int MedicalRecordID,int AppointmentID,string Diagnosis, string VisitDescription)
         {
             this.MedicalRecordID= MedicalRecordID;
-            this.AppointmentID=AppointmentID;
+            this.AppointmentID= AppointmentID;
             this.Diagnosis= Diagnosis;
             this.VisitDescription= VisitDescription;
+            this.AppointmentInfo = clsAppointment.Find(AppointmentID);
             this.Mode = enMode.Update;
         }
 
@@ -65,6 +68,24 @@ namespace HCMS_Buisness
                 return new clsMedicalRecord(MedicalRecordID,AppointmentID, Diagnosis, VisitDescription);
             else
                 return null;
+        }
+
+        public static clsMedicalRecord FindByAppointmentID(int AppointmentID)
+        {
+
+            int MedicalRecordID = -1;
+            string Diagnosis = "";
+            string VisitDescription = "";
+
+            if (clsMedicalRecordData.GetMedicalRecordInfoByAppointmentID(AppointmentID,ref MedicalRecordID,ref Diagnosis,ref VisitDescription))
+            {
+                return new clsMedicalRecord(MedicalRecordID,AppointmentID,Diagnosis,VisitDescription);
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public bool Save()
@@ -101,14 +122,19 @@ namespace HCMS_Buisness
             return clsMedicalRecordData.DeleteMedicalRecord(MedicalRecordID);
         }
 
-        public bool DeleteMedicalRecord()
+        public bool Delete()
         {
             return clsMedicalRecordData.DeleteMedicalRecord(this.MedicalRecordID);
         }
 
-        public static bool IsMedicalRecordExist(int PatientID)
+        public static bool IsMedicalRecordExisByAppointmentID(int AppointmentID)
         {
-            return clsMedicalRecordData.IsMedicalRecordExist((PatientID));
+            return clsMedicalRecordData.IsMedicalRecordExisByAppointmentID(AppointmentID);
+        }
+
+        public static bool IsMedicalRecordExist(int MedicalRecordID)
+        {
+            return clsMedicalRecordData.IsMedicalRecordExist(MedicalRecordID);
         }
     }
 }

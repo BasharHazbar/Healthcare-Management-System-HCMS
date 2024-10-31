@@ -27,9 +27,13 @@ namespace HCMS.People
         private void frmListPeople_Load(object sender, EventArgs e)
         {
             _dtAllPeople = clsPerson.GetAllPeople();
-            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID",
-                                                       "FirstName", "SecondName", "ThirdName", "LastName",
-                                                       "GendorCaption", "DateOfBirth", "Email", "PhoneNumber");
+  
+            if (_dtAllPeople.Rows.Count > 0)
+            {
+                _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID",
+                                             "FirstName", "SecondName", "ThirdName", "LastName",
+                                             "GendorCaption", "DateOfBirth", "Email", "PhoneNumber");
+            }
             dgvListPeople.DataSource = _dtPeople;
 
             dgvListPeople.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
@@ -122,12 +126,15 @@ namespace HCMS.People
                 return;
             }
 
-            if (FilterColumn == "PersonID")
-                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}",FilterColumn, txtFindBy.Text.Trim());
-            else
-                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
+            if (_dtAllPeople.Rows.Count > 0)
+            {
+                if (FilterColumn == "PersonID")
+                    _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
+                else
+                    _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
 
-            lblRecordsCount.Text = _dtPeople.Rows.Count.ToString();
+                lblRecordsCount.Text = _dtPeople.Rows.Count.ToString();
+            }
         }
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {

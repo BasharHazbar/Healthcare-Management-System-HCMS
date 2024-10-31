@@ -56,6 +56,52 @@ namespace HCMS_DataAccess
             return isFound;
         }
 
+        public static bool GetMedicalRecordInfoByAppointmentID(int AppointmentID, ref int MedicalRecordID, ref string Diagnosis, ref string VisitDescription)
+        {
+            bool isFound = false;
+
+            string query = "select * from MedicalRecords where AppointmentID = @AppointmentID;";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+
+                            if (reader.Read())
+                            {
+                                isFound = true;
+
+                                AppointmentID = (int)reader["AppointmentID"];
+
+                                MedicalRecordID = (int)reader["MedicalRecordID"];
+
+                                Diagnosis = (string)reader["Diagnosis"];
+
+                                VisitDescription = (string)reader["VisitDescription"];
+                            }
+                            else
+                            {
+                                isFound = false;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+
+                        isFound = false;
+                    }
+                }
+            }
+            return isFound;
+        }
+
         public static int AddNewMedicalRecord(int AppointmentID, string Diagnosis, string VisitDescription)
         {
             int PatientID = -1;
@@ -203,7 +249,7 @@ namespace HCMS_DataAccess
         }
 
 
-        public static bool IsMedicalRecordExist(int PatientID)
+        public static bool IsMedicalRecordExist(int MedicalRecordID)
         {
             bool isFound = false;
             string query = "select 1 from MedicalRecords where MedicalRecordID = @MedicalRecordID";
@@ -212,7 +258,7 @@ namespace HCMS_DataAccess
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PatientID", PatientID);
+                    command.Parameters.AddWithValue("@MedicalRecordID", MedicalRecordID);
 
                     try
                     {
@@ -232,5 +278,37 @@ namespace HCMS_DataAccess
             }
             return isFound;
         }
+
+        public static bool IsMedicalRecordExisByAppointmentID(int AppointmentID)
+        {
+            bool isFound = false;
+
+            string query = "select 1 from MedicalRecords where AppointmentID = @AppointmentID";
+
+            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@AppointmentID", AppointmentID);
+
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error message
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
+                }
+            }
+            return isFound;
+        }
+
     }
 }

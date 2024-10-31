@@ -105,7 +105,7 @@ namespace HCMS_Buisness
             }
         }
 
-        public static bool DeletePayment(int PaymentID)
+        public bool Delete()
         {
             return clsPaymentData.DeletePayment(PaymentID);
         }

@@ -5,6 +5,7 @@ using HCMS.Doctors;
 using HCMS.Patients;
 using HCMS.People;
 using HCMS.Users;
+using HCMS_Buisness;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,7 @@ namespace HCMS
             @"D:\HCMS Project\Background Images\Image_3.jpg",
             @"D:\HCMS Project\Background Images\Image_4.jpg"
         };
+        
         public frmMain(frmLogIn logIn)
         {
             InitializeComponent();
@@ -37,8 +39,22 @@ namespace HCMS
 
         }
 
+        void _ManageAccessUser()
+        {
+           usersToolStripMenuItem.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Admin;
+           patientToolStripMenuItem.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Admin;
+           doctotsToolStripMenuItem.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Admin;
+           peopleToolStripMenuItem.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Admin;
+           AppointmentInspectionDoctortoolStripMenuItem2.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Patient;
+           patientInspectionToolStripMenuItem.Enabled = clsGlobal.CurrentUser.Role == clsUser.enRole.Doctor;
+
+        }
+
+
         private void frmMain_Load(object sender, EventArgs e)
         {
+
+            _ManageAccessUser();
             //CurrentDirectory = System.IO.Directory.GetCurrentDirectory();
             _ImageTimer = new Timer
             {
@@ -117,7 +133,7 @@ namespace HCMS
 
         private void patientInspectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPatientsInspection Form = new FrmPatientsInspection();
+            frmPatientsInspection Form = new frmPatientsInspection();
             Form.ShowDialog();  
         }
     }

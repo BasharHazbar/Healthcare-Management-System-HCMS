@@ -88,13 +88,17 @@ namespace HCMS.Patients
 
                 return;
             }
+            
+            if (_dtPatients.Rows.Count > 0)
+            {
 
-            if (FilterColumn == "PersonID" || FilterColumn == "PatientID")
-                _dtPatients.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
-            else
-                _dtPatients.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
+                if (FilterColumn == "PersonID" || FilterColumn == "PatientID")
+                    _dtPatients.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
+                else
+                    _dtPatients.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
 
-            lblRecordsCount.Text = _dtPatients.Rows.Count.ToString();
+                lblRecordsCount.Text = _dtPatients.Rows.Count.ToString();
+            }
         }
 
         private void cbFindBy_SelectedIndexChanged(object sender, EventArgs e)

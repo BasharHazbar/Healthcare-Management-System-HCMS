@@ -114,7 +114,7 @@ namespace HCMS_Buisness
             return clsDoctorData.DeleteDoctor(this.DoctorID);
         }
 
-        public static bool DeleteDoctor(int DoctorID)
+        public static bool Delete(int DoctorID)
         {
             return clsDoctorData.DeleteDoctor(DoctorID);
         }

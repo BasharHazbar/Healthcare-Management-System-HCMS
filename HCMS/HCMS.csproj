@@ -46,11 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointment Inspection\Doctors\Controls\clsMedicalRecordPrescriptionsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\Controls\clsMedicalRecordPrescriptionsCard.Designer.cs">
+      <DependentUpon>clsMedicalRecordPrescriptionsCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\Controls\ctrlMedicalRecoredCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\Controls\ctrlMedicalRecoredCard.Designer.cs">
+      <DependentUpon>ctrlMedicalRecoredCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.Designer.cs">
       <DependentUpon>frmMakeMedicalRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\frmMakePrescriptionMedical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\frmMakePrescriptionMedical.Designer.cs">
+      <DependentUpon>frmMakePrescriptionMedical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\frmMedicalRecoedDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Appointment Inspection\Doctors\frmMedicalRecoedDetails.Designer.cs">
+      <DependentUpon>frmMedicalRecoedDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Appointment Inspection\Doctors\FrmPatientsInspection.cs">
       <SubType>Form</SubType>
@@ -189,8 +213,20 @@
     <Compile Include="Users\frmUserDetails.Designer.cs">
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\Controls\clsMedicalRecordPrescriptionsCard.resx">
+      <DependentUpon>clsMedicalRecordPrescriptionsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\Controls\ctrlMedicalRecoredCard.resx">
+      <DependentUpon>ctrlMedicalRecoredCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Appointment Inspection\Doctors\frmMakeMedicalRecord.resx">
       <DependentUpon>frmMakeMedicalRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\frmMakePrescriptionMedical.resx">
+      <DependentUpon>frmMakePrescriptionMedical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Appointment Inspection\Doctors\frmMedicalRecoedDetails.resx">
+      <DependentUpon>frmMedicalRecoedDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Appointment Inspection\Doctors\FrmPatientsInspection.resx">
       <DependentUpon>FrmPatientsInspection.cs</DependentUpon>
@@ -571,6 +607,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\doctor 48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diagnosis 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Medical Record 512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medical record 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prescription 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prescription 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

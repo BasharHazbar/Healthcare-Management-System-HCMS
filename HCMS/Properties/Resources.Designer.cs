@@ -353,6 +353,16 @@ namespace HCMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Diagnosis_32 {
+            get {
+                object obj = ResourceManager.GetObject("Diagnosis 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Doctor {
             get {
                 object obj = ResourceManager.GetObject("Doctor", resourceCulture);
@@ -613,6 +623,26 @@ namespace HCMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap medical_record_32 {
+            get {
+                object obj = ResourceManager.GetObject("medical record 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Medical_Record_512 {
+            get {
+                object obj = ResourceManager.GetObject("Medical Record 512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Next_32 {
             get {
                 object obj = ResourceManager.GetObject("Next 32", resourceCulture);
@@ -786,6 +816,26 @@ namespace HCMS.Properties {
         internal static System.Drawing.Bitmap Phone_32 {
             get {
                 object obj = ResourceManager.GetObject("Phone 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prescription_32 {
+            get {
+                object obj = ResourceManager.GetObject("Prescription 32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prescription_512 {
+            get {
+                object obj = ResourceManager.GetObject("Prescription 512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

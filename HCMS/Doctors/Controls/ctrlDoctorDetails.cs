@@ -21,12 +21,7 @@ namespace HCMS.Doctors.Controls
             InitializeComponent();
         }
 
-        private bool _EditPersonInfoEnabled;
-        public bool EditPersonInfoEnabled
-        {
-            get { return _EditPersonInfoEnabled; }
-            set { _EditPersonInfoEnabled = value; ctrlPersonCard1.EditPersonInfoEnabled = _EditPersonInfoEnabled; }
-        }
+    
 
 
         public int DoctorID

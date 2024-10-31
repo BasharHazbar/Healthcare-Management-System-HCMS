@@ -205,7 +205,7 @@ namespace HCMS_DataAccess
         }
 
 
-        public static DataTable GetAppointmentsPerPatientID(int PersonID)
+        public static DataTable GetAppointmentsPerPatient(int PersonID)
 		{
 
 			DataTable dt = new DataTable();
@@ -259,13 +259,13 @@ namespace HCMS_DataAccess
 		}
 
 
-        public static DataTable GetAppointmentsPerDoctorID(int PersonID)
+        public static DataTable GetAppointmentsPerDoctor(int PersonID)
         {
 
             DataTable dt = new DataTable();
 
             string query = @"Select ap.AppointmentID, pt.PatientID, FullName = p.FirstName + ' ' + p.SecondName + ' ' + 
-                                ISNULL( p.ThirdName,'') +' ' + p.LastName,
+                                ISNULL( p.ThirdName,'') + ' ' + p.LastName,
 								 convert(varchar, ap.AppointmentDate, 0) as AppointmentDate,ap.EndTime,
 								 ap.Notes,
 								 convert(varchar, ap.CreatedDate, 0) as CreatedDate,
@@ -373,18 +373,18 @@ namespace HCMS_DataAccess
 			return isFound;
 		}
 
-        public static bool IsTherActiveInspectionAppointment(int PersonID)
+        public static bool IsTherActiveInspectionAppointment(int PatientID)
         {
             bool isFound = false;
 
             string query = @"Select top 1 found = 1 from Appointments where
-										PatientID = 4 and Status = 0 order by AppointmentID desc;";
+										PatientID = @PatientID and Status = 0 order by AppointmentID desc;";
 
             using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    command.Parameters.AddWithValue("@PatientID", PatientID);
 
                     try
                     {

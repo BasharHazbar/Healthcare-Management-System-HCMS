@@ -54,7 +54,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbTitle.Location = new System.Drawing.Point(192, 42);
+            this.lbTitle.Location = new System.Drawing.Point(192, 41);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(715, 46);
             this.lbTitle.TabIndex = 139;
@@ -199,9 +199,8 @@
             // 
             this.ctrlPersonCardWithFilter.AnyPerson = HCMS.People.Controls.ctrlPersonCardWithFilter.enAnyPerson.Doctor;
             this.ctrlPersonCardWithFilter.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter.EditPersonInfoEnabled = false;
             this.ctrlPersonCardWithFilter.FilterEnabled = true;
-            this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(38, 91);
+            this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(38, 89);
             this.ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";
             this.ctrlPersonCardWithFilter.ShowAddPerson = false;
             this.ctrlPersonCardWithFilter.Size = new System.Drawing.Size(1003, 375);

@@ -169,7 +169,6 @@
             // 
             this.ctrlPersonCardWithFilter.AnyPerson = HCMS.People.Controls.ctrlPersonCardWithFilter.enAnyPerson.Person;
             this.ctrlPersonCardWithFilter.BackColor = System.Drawing.Color.White;
-            this.ctrlPersonCardWithFilter.EditPersonInfoEnabled = true;
             this.ctrlPersonCardWithFilter.FilterEnabled = true;
             this.ctrlPersonCardWithFilter.Location = new System.Drawing.Point(31, 26);
             this.ctrlPersonCardWithFilter.Name = "ctrlPersonCardWithFilter";

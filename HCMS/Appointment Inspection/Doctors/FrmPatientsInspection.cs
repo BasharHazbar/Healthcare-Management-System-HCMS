@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace HCMS.Appointment_Inspection.Doctors
 {
-    public partial class FrmPatientsInspection : Form
+    public partial class frmPatientsInspection : Form
     {
 
         private DataTable _dtPatientsInspection;
-        public FrmPatientsInspection()
+        public frmPatientsInspection()
         {
             InitializeComponent();
         }
@@ -128,39 +128,30 @@ namespace HCMS.Appointment_Inspection.Doctors
 
         private void showDoctorDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int PatientID = (int)dgvListPatientInspection.CurrentRow.Cells[1].Value;
+            clsMedicalRecord MedicalRecord = clsMedicalRecord.FindByAppointmentID((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
 
-            clsPatient Patient = clsPatient.Find(PatientID);
-
-            if (Patient == null)
+            if (MedicalRecord == null)
             {
-                MessageBox.Show("No Patient with PatientID = " + PatientID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There is No MedicalRecord", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            frmPatientDetails form = new frmPatientDetails(Patient.PersonID);
+            frmMedicalRecoedDetails form = new frmMedicalRecoedDetails(MedicalRecord.MedicalRecordID);
             form.ShowDialog();
         }
 
         private void dgvListPatientInspection_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int PatientID = (int)dgvListPatientInspection.CurrentRow.Cells[1].Value;
+            clsMedicalRecord MedicalRecord = clsMedicalRecord.FindByAppointmentID((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
 
-            clsPatient Patient = clsPatient.Find(PatientID);
-
-            if (Patient == null)
+/*            if (MedicalRecord == null)
             {
-                MessageBox.Show("No Patient with PatientID = " + PatientID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There is No MedicalRecord", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            frmPatientDetails form = new frmPatientDetails(Patient.PersonID);
+*/
+            frmMedicalRecoedDetails form = new frmMedicalRecoedDetails();
             form.ShowDialog();
-        }
-
-        private void InspectionToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void CancelToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -187,8 +178,42 @@ namespace HCMS.Appointment_Inspection.Doctors
 
         private void makeMedicalRecordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMakeMedicalRecord form = new frmMakeMedicalRecord((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
+            clsAppointment Appointment = clsAppointment.Find((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
+
+            if (Appointment == null)
+            {
+                MessageBox.Show("There is no appointment with ID = " + (int)dgvListPatientInspection.CurrentRow.Cells[0].Value, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmMakeMedicalRecord form = new frmMakeMedicalRecord(Appointment.AppointmentID);
             form.ShowDialog();
+        }
+
+        private void makePrescriptionMedicalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsMedicalRecord MedicalRecord = clsMedicalRecord.FindByAppointmentID((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
+
+            if (MedicalRecord == null)
+            {
+                MessageBox.Show("There is No MedicalRecord", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            frmMakePrescriptionMedical form = new frmMakePrescriptionMedical(MedicalRecord.MedicalRecordID);
+            form.ShowDialog();
+        }
+
+        private void cmsPatientInspection_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            bool IsMedicalExsit = !clsMedicalRecord.
+                IsMedicalRecordExisByAppointmentID((int)dgvListPatientInspection.CurrentRow.Cells[0].Value);
+
+            makeMedicalRecordToolStripMenuItem.Enabled = !IsMedicalExsit;
+
+            makePrescriptionMedicalToolStripMenuItem.Enabled = IsMedicalExsit;
+
         }
     }
 }

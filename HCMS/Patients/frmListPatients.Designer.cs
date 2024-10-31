@@ -220,7 +220,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListPatients.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListPatients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvListPatients.GridColor = System.Drawing.Color.White;
+            this.dgvListPatients.GridColor = System.Drawing.Color.Black;
             this.dgvListPatients.Location = new System.Drawing.Point(50, 319);
             this.dgvListPatients.MultiSelect = false;
             this.dgvListPatients.Name = "dgvListPatients";

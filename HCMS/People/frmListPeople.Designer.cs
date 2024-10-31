@@ -83,7 +83,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListPeople.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListPeople.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvListPeople.GridColor = System.Drawing.Color.White;
+            this.dgvListPeople.GridColor = System.Drawing.Color.Black;
             this.dgvListPeople.Location = new System.Drawing.Point(33, 317);
             this.dgvListPeople.MultiSelect = false;
             this.dgvListPeople.Name = "dgvListPeople";

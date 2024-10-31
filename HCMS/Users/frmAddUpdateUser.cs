@@ -197,7 +197,10 @@ namespace HCMS.Users
             }
             _User.PersonID = ctrlPersonCardWithFilter.PersonID;
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = clsGlobal.HashPassword(txtPassword.Text.Trim());
+            if (txtPassword.Text != "")
+            {
+                _User.Password = clsGlobal.HashPassword(txtPassword.Text.Trim());
+            }
             _User.IsActive = chkIsActive.Checked;
 
             switch (cbRole.Text.Trim())
@@ -205,7 +208,7 @@ namespace HCMS.Users
                 case "Admin":
                     _User.Role = clsUser.enRole.Admin;
                     break;
-                case "Doctro":
+                case "Doctor":
                     _User.Role = clsUser.enRole.Doctor;
                     break;
                 case "Patient":
@@ -220,7 +223,7 @@ namespace HCMS.Users
                 lblUserID.Text = _User.UserID.ToString();
                 _Mode = enMode.Update;
 
-                lbTitle.Text = "Update Person";
+                lbTitle.Text = "Update User";
 
                 MessageBox.Show("Data Save Successflly", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

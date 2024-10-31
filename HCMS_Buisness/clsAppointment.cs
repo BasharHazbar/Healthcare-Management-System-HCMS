@@ -150,12 +150,12 @@ namespace HCMS_Buisness
 
         public static DataTable GetAppointmentsPerPatientID(int PersonID)
         {
-            return clsAppointmentData.GetAppointmentsPerPatientID(PersonID);
+            return clsAppointmentData.GetAppointmentsPerPatient(PersonID);
         }
 
         public static DataTable GetAppointmentsPerDoctorID(int PersonID)
         {
-            return clsAppointmentData.GetAppointmentsPerDoctorID(PersonID);
+            return clsAppointmentData.GetAppointmentsPerDoctor(PersonID);
         }
 
         public static bool DeleteAppointment(int AppointmentID)
@@ -163,7 +163,7 @@ namespace HCMS_Buisness
             return clsAppointmentData.DeleteAppointment(AppointmentID);
         }
 
-        public  bool DeleteAppointment()
+        public  bool Delete()
         {
             return clsAppointmentData.DeleteAppointment(this.AppointmentID);
         }

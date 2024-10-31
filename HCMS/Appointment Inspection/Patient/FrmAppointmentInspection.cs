@@ -140,7 +140,18 @@ namespace HCMS.Appointment_Inspection
 
         private void btnAddNewInspectionAppoinment_Click(object sender, EventArgs e)
         {
-            if (clsAppointment.IsTherActiveInspectionAppointment(clsGlobal.CurrentUser.PersonID))
+
+            clsPatient Patient = clsPatient.FindByPersonID(clsGlobal.CurrentUser.PersonID);
+
+            if (Patient == null)
+            {
+                MessageBox.Show("No Patient!",
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+           
+
+            if (clsAppointment.IsTherActiveInspectionAppointment(Patient.PatientID))
             {
                 MessageBox.Show("You Aready Have an Active Inspection Appointment!",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

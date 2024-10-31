@@ -96,13 +96,16 @@ namespace HCMS.Doctors
 
                 return;
             }
+            
+            if (_dtDoctors.Rows.Count > 0)
+            {
+                if (FilterColumn == "PersonID" || FilterColumn == "DoctorID")
+                    _dtDoctors.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
+                else
+                    _dtDoctors.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
 
-            if (FilterColumn == "PersonID" || FilterColumn == "DoctorID")
-                _dtDoctors.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
-            else
-                _dtDoctors.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
-
-            lblRecordsCount.Text = _dtDoctors.Rows.Count.ToString();
+                lblRecordsCount.Text = _dtDoctors.Rows.Count.ToString();
+            }
         }
 
         private void txtFindBy_KeyPress(object sender, KeyPressEventArgs e)
@@ -156,6 +159,7 @@ namespace HCMS.Doctors
         {
             frmAddUpdateDoctor form = new frmAddUpdateDoctor();
             form.ShowDialog();
+            frmListDoctor_Load(null,null);
         }
 
         private void dgvListDoctor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

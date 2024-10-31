@@ -36,12 +36,8 @@ namespace HCMS
             InitializeComponent();
         }
 
-        private bool _EditPersonInfoEnabled;
-        public bool EditPersonInfoEnabled
-        {
-            get { return _EditPersonInfoEnabled; }
-            set { _EditPersonInfoEnabled = value; if (_Person != null) { llEditPersonInfo.Enabled = _EditPersonInfoEnabled; } }
-        }
+ 
+    
 
         public void LoadPersonInfo(int PersonID)
         {

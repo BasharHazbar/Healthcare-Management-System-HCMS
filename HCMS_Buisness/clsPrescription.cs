@@ -17,72 +17,60 @@ namespace HCMS_Buisness
 
         public int PrescriptionID {  get; set; }
         public int MedicalRecordID { get; set; }
-        clsMedicalRecord MedicalRecordInfo { get; }
-        public string Treatment { get; set; }
+        clsMedicalRecord MedicalRecordInfo { get; set; }
+        public string MedicationDetails { get; set; }
         public string Dosage { get; set; }
-        public string Frequency { get; set; }
-        public DateTime StartDate { get; set;}
-        public DateTime EndDate { get; set;}
+        public DateTime PrescriptionDate { get; set; }
         public string SpecialInstructions { get; set;}
 
         public clsPrescription()
         {
             this.PrescriptionID = -1;
             this.MedicalRecordID = -1;
-            this.Treatment = "";
+            this.MedicationDetails = "";
             this.Dosage = "";
-            this.Frequency = "";
-            this.StartDate = DateTime.Now;
-            this.EndDate = DateTime.Now;
             this.SpecialInstructions = "";
             this.Mode = enMode.AddNew;
         }
 
-        public clsPrescription(int PrescriptionID, int MedicalRecordID, string Treatment, 
-            string Dosage, string Frequency, DateTime StartDate, DateTime EndDate, string SpecialInstructions)
+        public clsPrescription(int PrescriptionID, int MedicalRecordID, string MedicationDetails, 
+            string Dosage, DateTime PrescriptionDate, string SpecialInstructions)
         {
             this.PrescriptionID = PrescriptionID;
             this.MedicalRecordID = MedicalRecordID;
             this.MedicalRecordInfo = clsMedicalRecord.Find(MedicalRecordID);
-            this.Treatment = Treatment;
+            this.MedicationDetails = MedicationDetails;
             this.Dosage = Dosage;
-            this.Frequency = Frequency;
-            this.StartDate = StartDate;
-            this.EndDate = EndDate;
             this.SpecialInstructions = SpecialInstructions;
             this.Mode = enMode.Update;
         }
 
         private bool _AddNewPrescription()
         {
-            this.PrescriptionID = clsPrescriptionData.AddNewPrescription(this.MedicalRecordID,this.Treatment,this.Dosage,
-                this.Frequency,this.StartDate,this.EndDate,this.SpecialInstructions);
+            this.PrescriptionID = clsPrescriptionData.AddNewPrescription(this.MedicalRecordID,this.MedicationDetails,this.Dosage,
+                this.SpecialInstructions);
             return this.PrescriptionID != -1;
         }
 
         private bool _UpdatePrescription()
         {
-            return clsPrescriptionData.UpdatePrescription(this.PrescriptionID,this.MedicalRecordID,this.Treatment,
-                this.Dosage,this.Frequency,this.StartDate,this.EndDate,this.SpecialInstructions);
+            return clsPrescriptionData.UpdatePrescription(this.PrescriptionID,this.MedicalRecordID,
+                this.MedicationDetails,this.Dosage,this.PrescriptionDate,this.SpecialInstructions);
         }
-        public clsPrescription Find(int PrescriptionID)
+        public static clsPrescription Find(int PrescriptionID)
         {
             int MedicalRecordID = -1;
-            string Treatment = "";
+            string MedicationDetails = "";
             string Dosage = "";
-            string Frequency = "";
-            DateTime StartDate = DateTime.Now;
-            DateTime EndDate = DateTime.Now;
+            DateTime PrescriptionDate = DateTime.Now;
             string SpecialInstructions = "";
 
-            bool IsFound = clsPrescriptionData.GetPrescriptionInfoByID(PrescriptionID,
-                ref MedicalRecordID,ref Treatment,ref Dosage,ref Frequency,ref StartDate,
-                ref EndDate,ref SpecialInstructions);
+            bool IsFound = clsPrescriptionData.GetPrescriptionInfoByID(PrescriptionID,ref MedicalRecordID,ref MedicationDetails
+                ,ref Dosage,ref PrescriptionDate,ref SpecialInstructions);
 
             if (IsFound)
             {
-                return new clsPrescription(PrescriptionID,MedicalRecordID,Treatment,Dosage,Frequency,
-                    StartDate,EndDate,SpecialInstructions);
+                return new clsPrescription(PrescriptionID,MedicalRecordID,MedicationDetails,Dosage,PrescriptionDate,SpecialInstructions);
             }
             else
                 return null;
@@ -113,9 +101,9 @@ namespace HCMS_Buisness
             return false;
         }
 
-        public static DataTable GetAllPrescriptions()
+        public static DataTable GetAllPrescriptionsPerMedicalRecord(int MedicalRecordID)
         {
-            return clsPrescriptionData.GetAllPrescriptions();
+            return clsPrescriptionData.GetAllPrescriptionsPerMedicalRecord(MedicalRecordID);
         }
 
         public static bool DeletePrescription(int PrescriptionID)
@@ -123,7 +111,7 @@ namespace HCMS_Buisness
             return clsPrescriptionData.DeletePrescription(PrescriptionID);
         }
 
-        public bool DeletePrescription()
+        public bool Delete()
         {
             return clsPrescriptionData.DeletePrescription(this.PrescriptionID);
         }

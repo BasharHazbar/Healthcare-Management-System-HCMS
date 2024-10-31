@@ -61,12 +61,8 @@ namespace HCMS.People.Controls
                 btnAddNewPerson.Visible = _ShowAddPerson; } 
         }
 
-        private bool _EditPersonInfoEnabled;
-        public bool EditPersonInfoEnabled
-        {
-            get { return _EditPersonInfoEnabled; }
-            set { _EditPersonInfoEnabled = value; ctrlPersonCard.EditPersonInfoEnabled = _EditPersonInfoEnabled; }
-        }
+
+
 
         private bool _FilterEnabled = true;
 
@@ -142,11 +138,10 @@ namespace HCMS.People.Controls
                     MessageBox.Show("Wrong ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ctrlPersonCard.ResetPersonInfo();
                 }
-
             }
 
             if (cbFindBy.Text == "Name" && cbPeopleList.Text != "None")
-           {
+            {
                 string Name = "";
 
                 if (_AnyPerson == enAnyPerson.Doctor)

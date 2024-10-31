@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -102,6 +103,11 @@ namespace HCMS_Buisness
         }
 
         public static bool DeletePatient(int PatientID)
+        {
+            return clsPatientData.DeletePatient(PatientID);
+        }
+
+        public bool Delete()
         {
             return clsPatientData.DeletePatient(PatientID);
         }

@@ -15,6 +15,8 @@ namespace HCMS.Appointment_Inspection.Doctors
 
         private int _MedicalRecordID;
 
+        private clsAppointment _Appointment;
+
         private int _AppointmentID;
         public frmMakeMedicalRecord(int AppointmentID)
         {
@@ -42,7 +44,17 @@ namespace HCMS.Appointment_Inspection.Doctors
                 lbTitle.Text = "Update Medical Record";
             }
 
-            ctrlPersonCard.LoadPersonInfo(clsGlobal.CurrentUser.PersonID);
+            _Appointment = clsAppointment.Find(_AppointmentID);
+
+            if (_Appointment == null)
+            {
+                MessageBox.Show("No Appointment with Appointment ID = " + _AppointmentID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
+            ctrlPersonCard.LoadPersonInfo(_Appointment.PatientInfo.PersonID);
+
             lblMedicalRecordID.Text = "[????]";
             txtVisitDescription.Text = "";
         }
@@ -57,7 +69,7 @@ namespace HCMS.Appointment_Inspection.Doctors
                 this.Close();
                 return;
             }
-
+           _MedicalRecordID = _MedicalRecord.MedicalRecordID;
            lblMedicalRecordID.Text = _MedicalRecordID.ToString();
            txtVisitDescription.Text = _MedicalRecord.VisitDescription;
 
@@ -70,16 +82,6 @@ namespace HCMS.Appointment_Inspection.Doctors
 
             if (_Mode == enMode.Update)
                 _LoadData();
- 
-            clsAppointment Appointment = clsAppointment.Find(_AppointmentID);
-
-            if (Appointment == null)
-            {
-                MessageBox.Show("No Appointment with Appointment ID = " + _AppointmentID, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            ctrlPersonCard.LoadPersonInfo(Appointment.PatientInfo.PersonID);
 
         }
 
@@ -102,6 +104,8 @@ namespace HCMS.Appointment_Inspection.Doctors
                 lblMedicalRecordID.Text = _MedicalRecordID.ToString();
                 _Mode = enMode.Update;
 
+                _Appointment.SetCompleted();
+
                 lbTitle.Text = "Update Medical Record";
 
                 MessageBox.Show("Data Save Successflly", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -110,8 +114,6 @@ namespace HCMS.Appointment_Inspection.Doctors
             {
                 MessageBox.Show("Data Not Save Successflly", "Not Saved", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        
+        }  
     }
 }

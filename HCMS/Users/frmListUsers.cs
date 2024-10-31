@@ -126,13 +126,17 @@ namespace HCMS.Users
 
                 return;
             }
+            
+            if (_dtUsers.Rows.Count > 0)
+            {
 
-            if (FilterColumn == "PersonID" || FilterColumn == "UserID")
-                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
-            else
-                _dtUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
+                if (FilterColumn == "PersonID" || FilterColumn == "UserID")
+                    _dtUsers.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFindBy.Text.Trim());
+                else
+                    _dtUsers.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFindBy.Text.Trim());
 
-            lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
+                lblRecordsCount.Text = _dtUsers.Rows.Count.ToString();
+            }
         }
 
         private void cbIsActive_SelectedIndexChanged(object sender, EventArgs e)
@@ -211,6 +215,7 @@ namespace HCMS.Users
         {
             frmAddUpdateUser form = new frmAddUpdateUser();
             form.ShowDialog();
+            frmListUsers_Load(null, null);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -228,6 +233,8 @@ namespace HCMS.Users
         {
             frmAddUpdateUser form = new frmAddUpdateUser((int)dgvListUsers.CurrentRow.Cells[0].Value);
             form.ShowDialog();
+
+            frmListUsers_Load(null,null);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
